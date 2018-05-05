@@ -2,11 +2,12 @@
 <html lang="en">
 <?php $this->load->helper('url');?>
 <link rel="stylesheet" href="<?php echo base_url();?>CSS/index.css">
-
 <head>
     <meta charset="UTF-8">
     <title>SKILLSPOT</title>
+
     <script src="<?php echo base_url();?>JS/index.js"></script>
+
 </head>
 <body>
 
@@ -17,11 +18,13 @@
         <form action="login.php" method="post">
             <br>
             <br>
-            E-address:&nbsp <input id="login-E" type="text" name="email">
+            E-address:&nbsp
+            <input id="login-E" type="text" name="email">
             <br>
             <label class="warn-text" id="login-win-e-label" > </label>
             <br>
-            Password:&nbsp&nbsp&nbsp<input class="login-pw" type="password" name="password">
+            Password:&nbsp&nbsp&nbsp
+            <input class="login-pw" type="password" name="password">
             <br>
             <label class="warn-text" id="login-win-p-label"> </label>
             <br>
@@ -37,24 +40,33 @@
     <a href="javascript:closeSignup()"><img class="close-icon" src="<?php echo base_url();?>img/close-icon.png" ></a>
 
     <div class="signup-subwin">
+        <h5><?php echo validation_errors();?></h5>
+        <form action="register" method="post">
         <br>
         <br>
-        E-address:&nbsp <input id="signup-E" placeholder="E-mail" type="text">
+        Username:&nbsp
+        <input id="username" name="username" placeholder="username" type="text">
+        <br>
+        E-address:&nbsp
+        <input id="signup-E" name="signup-E" placeholder="E-mail" type="text">
         <br>
         <label class="warn-text" id="signup-win-e-label"> </label>
         <br>
-        Password:&nbsp&nbsp&nbsp<input id="signup-pw" placeholder="password" type="password">
+        Password:&nbsp&nbsp
+        <input id="signup-pw" name="signup-pw" placeholder="password" type="password">
         <br>
         <label class="warn-text" id="signup-win-p-label"> </label>
         <br>
-        Please Reinput your Password:&nbsp&nbsp&nbsp<input id="signup-repw" placeholder="password" type="password">
+        Please Reinput your Password:&nbsp&nbsp&nbsp
+        <input id="signup-repw" name="signup-repw" placeholder="password" type="password">
         <br>
         <br>
         <input type="radio" name="gender" value="female">Female
         <input type="radio" name="gender" value="male">Male
         <br>
         <br>
-        <input class="signup-submit" type="button" value="signup" onclick="subSignup()">
+        <input class="signup-submit" type="submit" value="signup" onclick="subSignup()">
+        </form>
 
     </div>
 </div>
