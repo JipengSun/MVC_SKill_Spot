@@ -32,18 +32,52 @@ class Indice extends CI_Controller
         $this->form_validation->set_rules('signup-pw','Password','required');
         $this->form_validation->set_rules('signup-repw','Password Confirmation','required');
 	    $this->load->model('user_test');
-	    $arr = array('username'=> $_POST['username'],'mail' =>$_POST['signup-E'],'password' =>$_POST['signup-pw']);
+	    $pass = password_hash($_POST['signup-pw'],PASSWORD_BCRYPT);
+	    $arr = array('username'=> $_POST['username'],'mail' =>$_POST['signup-E'],'password' =>$pass);
 	    //$this->user_test->u_insert($arr);
         if ($this->form_validation->run()==FALSE)
         {
             //$this->load->view('skills/skillshow');
             $this->load->view('indice/login');
             //$this->load->view('indice/login');
-
         }
         else{
             $this->load->view('skills/skillshow');
-            $this->db->u_insert($arr);
+            $this->user_test->u_insert($arr);
         }
     }
+
+    public function login(){
+	    $this->load->model('user_test');
+	    $user = $this->user_test->u_select($_POST['email']);
+	    //$data['user'] = $user;
+	    //$this->load->view('pages/about',$data);
+	    if($user){
+	        if(password_verify($_POST['password'],$user[0]->password)){
+	            echo 'Password Right';
+	            $this->load->library('session');
+	            $arr = array('uid' => $user[0] -> uid);
+	            $this->session->set_userdata($arr);
+            }
+            else{
+	            echo 'Password Wrong';
+            }
+        }else{
+	        echo 'Email Wrong';
+        }
+    }
+    public function is_login(){
+	    $this->load->library('session');
+	    if($this->session->userdata('u_id')){
+	        echo 'logined';
+        }
+        else{
+	        echo 'no login';
+        }
+    }
+    public function logout(){
+	    $this->load->library('session');
+	    $this->sesssion->unset_userdata('uid');
+    }
+
 }

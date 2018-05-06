@@ -15,7 +15,7 @@
     <a href="javascript:closeLogin()"><img class="close-icon" src="<?php echo base_url();?>img/close-icon.png" ></a>
 
     <div class="login-subwin">
-        <form action="login.php" method="post">
+        <form action="login" method="post">
             <br>
             <br>
             E-address:&nbsp
