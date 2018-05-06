@@ -1,0 +1,246 @@
+/* ----------------------------- NAVBAR ------------------------------------- */
+#login-window{
+     display: none;
+     position: absolute;
+     top: 30%;
+     left: 40%;
+     /*margin: 0 auto;*/
+
+     height:200px;
+     width: 250px;
+     background-color: deepskyblue;
+     z-index: 2;
+     /*top:150px;*/
+ }
+
+#signup-window{
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    /*margin: 0 auto;*/
+
+    height:250px;
+    width: 250px;
+    background-color: greenyellow;
+    z-index: 2;
+    /*top:150px;*/
+}
+
+
+#black{
+    display: none;
+    position:absolute;
+    left:0px;
+    top:0px;
+
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: black;
+    z-index: 1;
+}
+
+.warn-text{
+    font-size: 10px;
+    color: red;
+}
+
+.login-subwin{
+    text-align: center;
+}
+
+.signup-subwin{
+    text-align: center;
+}
+
+.close-icon{
+    width: 20px;
+    height: 20px;
+    display: inline;
+    float: right;
+}
+
+.top-bar{
+    overflow: auto;
+    min-width: 100px;
+}
+
+.home-holder{
+    float: left;
+    padding: 10px;
+    width: 200px;
+    /*background-color: #333333;*/
+}
+
+.account-setup{
+    text-align: right;
+    width: 200px;
+    height: 30px;
+    float: right;
+    /*background-color: #0EA3F3;*/
+    padding: 10px;
+}
+
+.home-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.log-icon{
+    width: 80px;
+    height: 40px;
+    font-size: 18px;
+    opacity: 0.5;
+    border: none;
+    cursor:pointer;
+}
+
+.main-body{
+    background-image: url("img/back1.jpg");
+    width: auto;
+    min-width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.main-body-text{
+    width: 400px;
+    height: 300px;
+    margin-left: 30px;
+    padding-top: 80px;
+    color: white;
+
+}
+
+.btn-get-start{
+    background-color:#44c767;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+    outline: none;
+}
+.btn-get-start:hover {
+    background-color:#5cbf2a;
+}
+.btn-get-start:active {
+    position:relative;
+    top:1px;
+}
+
+.search-btn{
+    background-color:#44c767;
+    -moz-border-radius:14px;
+    -webkit-border-radius:14px;
+    border-radius:14px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    width: 60px;
+    padding:3px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+    outline: none;
+}
+.search-btn:hover {
+    background-color:#5cbf2a;
+}
+.search-btn:active {
+    position:relative;
+    top:1px;
+}
+
+/*.logo {*/
+    /*text-align: center;*/
+    /*!*background-color: #00FF00;*!*/
+    /*width: 100%;*/
+/*}*/
+
+
+.skill-logo {
+    width: 250px;
+    height: 120px;
+
+}
+
+.logo-name {
+    font-size: 30px;
+    color: #3A8DB0;
+    font-weight: bold;
+    /*text-shadow:#00FF00 0 0 10px;*/
+}
+
+.search-line{
+    text-align: center;
+    height: 40px;
+    padding-top: 100px;
+    display: none;
+}
+
+.textbox-search{
+    width: 200px;
+    height:20px;
+}
+
+.textbox-location{
+    width: 110px;
+    height: 20px;
+}
+
+.top{
+    width: 100%;
+    min-width: 800px;
+    /*background-image: url("img/back.jpg");*/
+}
+
+.cate{
+    /*text-align: left;*/
+
+    overflow: auto;
+    margin:0px auto;
+    width: 880px;
+
+}
+
+.cate-text{
+    /*position: absolute;*/
+    /*bottom: -10px;*/
+    background-color: rgba(255,255,255,0.5);
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 120px;
+    /*opacity: 0.3;*/
+    /*height: 40px;*/
+    /*width: 100px;*/
+}
+
+.sub-cate{
+    width: 200px;
+    height: 150px;
+    /*background-image: url("img/Repair.jpg");*/
+    background-repeat: no-repeat;
+    background-size: 200px 250px;
+    float: left;
+    margin: 0px 10px;
+
+}
+
+.copyright{
+    text-align: center;
+    height: 50px;
+    background-color: #F0F0F0;
+}
