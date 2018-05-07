@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <title>SKILLSPOT</title>
     <script src="<?php echo base_url();?>JS/index.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyrXBYup5k3STj8LnB5OtPLfwBpDMvbiU&signed_in=true&libraries=visualization&callback=initMap">
+    </script>
     <link rel="stylesheet" href="<?php echo base_url();?>CSS/resultDisplay.css">
     <script src="<?php echo base_url();?>JS/resultDisplay.js"></script>
     <link rel="stylesheet" href="<?php echo base_url();?>CSS/index.css">
@@ -68,7 +71,7 @@
         </div>
 
         <div class = "account-setup" id = "account-after-login" style="display: none">
-            <a id="id-after-login" href="javascript: "></a>
+            <a id="id-after-login" href="javascript: ">></a>
             <input type="button" value="log out" class = "logout-icon" onclick="logout()"/>
         </div>
 
@@ -84,9 +87,9 @@
     <br><br>
 
     <div class= "search-line">
-        <input type="text" class = "textbox-search" placeholder="I'm looking for ...">
-        <input type="text" class = "textbox-location" placeholder="Location">
-        <input type="button" value="Search" class = "search-btn" onclick="createDiv()"/>
+        <input type="text" class = "textbox-search" id="keywords" placeholder="I'm looking for ...">
+        <input type="text" class = "textbox-location" id="location" placeholder="Location">
+        <input type="button" value="Search" class = "search-btn" onclick="process()"/>
     </div>
 
     <br>
