@@ -4,3 +4,4 @@
 ## 1.2 Password Encryption and Log in Function.</br>
 ### 1.2.1 Ajax Examples Learning.</br>
 ## 1.3 Email Sending Function.</br>
+## 1.4 PDF Generation Function.</br>
