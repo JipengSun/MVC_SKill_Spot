@@ -11,39 +11,62 @@
 <div id="whole">
     <div class="main">
 
-        <div class="personal-info">
-            <pre>First Name: <input type="text" id="first-name"></pre>
+        <div style="overflow: auto;">
 
-            <pre>Last Name:  <input type="text" id="last-name"></pre>
+            <div class="personal-info">
 
-            <pre>Phone:      <input type="number" id="number"></pre>
+                <pre>Name:       <input type="text" id="first-name"></pre>
 
-            <pre>Address:    <input type="text" id="address"></pre>
+                <pre>Phone:      <input type="number" id="number"></pre>
 
-            <pre>Zip:        <input type="number" id="zip"></pre>
-
-            <pre>Introduction:                 </pre>
-            <textarea id="personal-intro" style="width: 300px; height: 200px;"></textarea>>
-
-            <pre>Please what category of service you can provide:</pre>
-            <pre> <input type="checkbox" id="handy"> Handyservice      <input type="checkbox" id="pick"> Pick&Delievery </pre>
-            <pre> <input type="checkbox" id="law"> Legal Consulting  <input type="checkbox" id="moving"> Moving</pre>
-            <pre> <input type="checkbox" id="it"> IT                <input type="checkbox" id="study"> Study</pre>
+                <pre>Introduction:                 </pre>
+                <textarea id="personal-intro" style="width: 300px; height: 200px;"></textarea>>
 
 
-            </pre>
+
+
+
+            </div>
+
+
+            <div class="personal-img">
+                <pre>Choose Profile:          <input type="file" onchange="preview(this)"></pre>
+
+                <label class="warn-text" id="set-prof-label"> </label>
+                <br>
+
+                <br>
+                <div id="preview">Profile preview</div>
+
+            </div>
+
         </div>
 
+        <div class="service">
+            <pre>Please what category of service you can provide:</pre>
 
-        <div class="personal-img">
-            <pre>Choose Profile:          <input type="file" onchange="preview(this)"></pre>
+            <?php
 
-            <label class="warn-text" id="set-prof-label"> </label>
-            <br>
-            <pre>Choose Background Image: <input type="file" onchange="setbackimage(this)"></pre>
-            <label class="warn-text" id="set-back-label"> </label>
-            <br>
-            <div id="preview">Profile preview</div>
+            for ($i = 0; $i < 3; $i++) {
+                echo "Type:
+            <select class=\"service-cate\">
+                <option value=\"hand\">Handyman</option>
+                <option value=\"delievery\">Delievery</option>
+                <option value=\"law\">Legal Consulting</option>
+                <option value=\"moving\">Moving</option>
+                <option value=\"it\">IT</option>
+                <option value=\"study\">Study</option>
+            </select>
+
+            Service: <input class=\"service-name\" type=\"text\">
+
+            price: <input class=\"service-price\" type=\"text\">
+
+            location: <input class=\"service-addr\" type=\"text\">"."<br>";
+            }
+
+            ?>
+
 
         </div>
 

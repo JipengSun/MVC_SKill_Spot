@@ -97,7 +97,7 @@ switch (ENVIRONMENT)
  * This variable must contain the name of your "system" directory.
  * Set the path if it is not in the same directory as this file.
  */
-	$system_path = '/Applications/XAMPP/xamppfiles/htdocs/system';
+	$system_path = '/Applications/XAMPP/xamppfiles/htdocs/MVC_SKill_Spot/system';
 
 /*
  *---------------------------------------------------------------
@@ -114,7 +114,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = '/Applications/XAMPP/xamppfiles/htdocs/application';
+	$application_folder = '/Applications/XAMPP/xamppfiles/htdocs/MVC_SKill_Spot/application';
 
 /*
  *---------------------------------------------------------------
@@ -129,7 +129,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = '/Applications/XAMPP/xamppfiles/htdocs/application/views';
+	$view_folder = '/Applications/XAMPP/xamppfiles/htdocs/MVC_SKill_Spot/application/views';
 
 
 /*
