@@ -1,0 +1,96 @@
+[
+    {
+        "name": "konekt/pdf-invoice",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/artkonekt/pdf-invoice.git",
+            "reference": "e72243761e4d8ccc2a1c8853aa6d78da7fb03836"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/artkonekt/pdf-invoice/zipball/e72243761e4d8ccc2a1c8853aa6d78da7fb03836",
+            "reference": "e72243761e4d8ccc2a1c8853aa6d78da7fb03836",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6",
+            "setasign/fpdf": "~1.8.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~5.0"
+        },
+        "time": "2018-03-05T08:47:36+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Konekt\\PdfInvoice\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Attila Fulop",
+                "homepage": "https://github.com/fulopattila122"
+            }
+        ],
+        "description": "Library to generate PDF invoices",
+        "keywords": [
+            "artkonekt",
+            "invoice",
+            "konekt",
+            "pdf"
+        ]
+    },
+    {
+        "name": "setasign/fpdf",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Setasign/FPDF.git",
+            "reference": "2c68c9e6c034ac3187d25968790139a73184cdb1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Setasign/FPDF/zipball/2c68c9e6c034ac3187d25968790139a73184cdb1",
+            "reference": "2c68c9e6c034ac3187d25968790139a73184cdb1",
+            "shasum": ""
+        },
+        "time": "2016-01-01T17:47:15+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "fpdf.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "no usage restriction"
+        ],
+        "authors": [
+            {
+                "name": "Olivier Plathey",
+                "email": "oliver@fpdf.org",
+                "homepage": "http://fpdf.org/"
+            }
+        ],
+        "description": "FPDF is a PHP class which allows to generate PDF files with pure PHP. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.",
+        "homepage": "http://www.fpdf.org",
+        "keywords": [
+            "fpdf",
+            "pdf"
+        ]
+    }
+]

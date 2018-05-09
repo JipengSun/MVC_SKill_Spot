@@ -3845,7 +3845,7 @@ class PHPMailer
             'sea' => 'application/octet-stream',
             'so' => 'application/octet-stream',
             'oda' => 'application/oda',
-            'pdf' => 'application/pdf',
+            'Mypdf' => 'application/pdf',
             'ai' => 'application/postscript',
             'eps' => 'application/postscript',
             'ps' => 'application/postscript',
