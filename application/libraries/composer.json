@@ -1,0 +1,6 @@
+{
+	"require":{
+	"konekt/pdf-invoice": "1.0.2",
+	"minishlink/web-push": "2.0.1"
+	}
+}
