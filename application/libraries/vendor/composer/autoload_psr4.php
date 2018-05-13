@@ -6,19 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
-    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'Minishlink\\WebPush\\' => array($vendorDir . '/minishlink/web-push/src'),
-    'Mdanter\\Ecc\\' => array($vendorDir . '/mdanter/ecc/src'),
     'Konekt\\PdfInvoice\\' => array($vendorDir . '/konekt/pdf-invoice/src'),
-    'Jose\\' => array($vendorDir . '/spomky-labs/jose/src'),
+    'Jose\\Component\\Signature\\' => array($vendorDir . '/web-token/jwt-signature'),
+    'Jose\\Component\\KeyManagement\\' => array($vendorDir . '/web-token/jwt-key-mgmt'),
+    'Jose\\Component\\Core\\' => array($vendorDir . '/web-token/jwt-core'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'FG\\' => array($vendorDir . '/fgrosse/phpasn1/lib'),
     'Base64Url\\' => array($vendorDir . '/spomky-labs/base64url/src'),
-    'Assert\\' => array($vendorDir . '/beberlei/assert/lib/Assert'),
-    'AESKW\\' => array($vendorDir . '/spomky-labs/aes-key-wrap/src'),
-    'AESGCM\\' => array($vendorDir . '/spomky-labs/php-aes-gcm/src'),
 );

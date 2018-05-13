@@ -20,12 +20,12 @@ class InvoicePrinter extends FPDF
     public $font            = 'helvetica';        /* Font Name : See inc/fpdf/font for all supported fonts */
     public $columnOpacity   = 0.06;            /* Items table background color opacity. Range (0.00 - 1) */
     public $columnSpacing   = 0.3;                /* Spacing between Item Tables */
-    public $referenceformat = ['.', ','];    /* Currency formater */
-    public $margins         = [
+    public $referenceformat = array('.', ',');    /* Currency formater */
+    public $margins         = array(
         'l' => 15,
         't' => 15,
         'r' => 15
-    ]; /* l: Left Side , t: Top Side , r: Right Side */
+    ); /* l: Left Side , t: Top Side , r: Right Side */
 
     public $lang;
     public $document;
@@ -53,17 +53,17 @@ class InvoicePrinter extends FPDF
     public function __construct($size = 'A4', $currency = '$', $language = 'en')
     {
         $this->columns            = 4;
-        $this->items              = [];
-        $this->totals             = [];
-        $this->addText            = [];
+        $this->items              = array();
+        $this->totals             = array();
+        $this->addText            = array();
         $this->firstColumnWidth   = 70;
         $this->currency           = $currency;
-        $this->maxImageDimensions = [230, 130];
+        $this->maxImageDimensions = array(230, 130);
         $this->setLanguage($language);
         $this->setDocumentSize($size);
         $this->setColor("#222222");
 
-        parent::__construct('P', 'mm', [$this->document['w'], $this->document['h']]);
+        parent::__construct('P', 'mm', array($this->document['w'], $this->document['h']));
 
         $this->AliasNbPages();
         $this->SetMargins($this->margins['l'], $this->margins['t'], $this->margins['r']);
@@ -106,10 +106,10 @@ class InvoicePrinter extends FPDF
         $newHeight = $this->maxImageDimensions[1] / $height;
         $scale     = min($newWidth, $newHeight);
 
-        return [
+        return array(
             round($this->pixelsToMM($scale * $width)),
             round($this->pixelsToMM($scale * $height))
-        ];
+        );
     }
 
     private function pixelsToMM($val)
@@ -132,7 +132,7 @@ class InvoicePrinter extends FPDF
             $g = hexdec(substr($hex, 2, 2));
             $b = hexdec(substr($hex, 4, 2));
         }
-        $rgb = [$r, $g, $b];
+        $rgb = array($r, $g, $b);
 
         return $rgb;
     }
@@ -188,7 +188,7 @@ class InvoicePrinter extends FPDF
     public function setLogo($logo = 0, $maxWidth = 0, $maxHeight = 0)
     {
         if ($maxWidth and $maxHeight) {
-            $this->maxImageDimensions = [$maxWidth, $maxHeight];
+            $this->maxImageDimensions = array($maxWidth, $maxHeight);
         }
         $this->logo       = $logo;
         $this->dimensions = $this->resizeToFit($logo);
@@ -216,7 +216,7 @@ class InvoicePrinter extends FPDF
 
     public function setNumberFormat($decimals, $thousands_sep)
     {
-        $this->referenceformat = [$decimals, $thousands_sep];
+        $this->referenceformat = array($decimals, $thousands_sep);
     }
 
     public function flipflop()
@@ -269,13 +269,13 @@ class InvoicePrinter extends FPDF
 
     public function addTitle($title)
     {
-        $this->addText[] = ['title', $title];
+        $this->addText[] = array('title', $title);
     }
 
     public function addParagraph($paragraph)
     {
         $paragraph       = $this->br2nl($paragraph);
-        $this->addText[] = ['paragraph', $paragraph];
+        $this->addText[] = array('paragraph', $paragraph);
     }
 
     public function addBadge($badge)
@@ -403,7 +403,12 @@ class InvoicePrinter extends FPDF
                 $this->SetFont($this->font, '', 8);
                 $this->SetTextColor(100, 100, 100);
                 $this->Ln(7);
-                for ($i = 1; $i < max(count($this->from), count($this->to)); $i++) {
+                //echo gettype($this->from);
+                //echo empty($this->from);
+                //$this->from = array("Seller Name","Sample Company Name","128 AA Juanita Ave","Glendora , CA 91740");
+                //echo gettype($this->from);
+                //echo empty($this->from);
+                for ($i = 1; $i < 2/*max(sizeof($this->from), sizeof($this->to))*/; $i++) {
                     $this->Cell($width, $lineheight, iconv("UTF-8", "ISO-8859-1", $this->from[$i]), 0, 0, 'L');
                     $this->Cell(0, $lineheight, iconv("UTF-8", "ISO-8859-1", $this->to[$i]), 0, 0, 'L');
                     $this->Ln(5);

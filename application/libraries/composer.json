@@ -1,6 +1,11 @@
 {
+	"config": {
+       "platform": {
+           "php": "7.1.14"
+       }
+    },
 	"require":{
 	"konekt/pdf-invoice": "1.0.2",
-	"minishlink/web-push": "2.0.1"
+	"minishlink/web-push": "4.0.1"
 	}
 }

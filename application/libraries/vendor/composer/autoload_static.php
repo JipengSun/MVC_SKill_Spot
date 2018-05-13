@@ -4,30 +4,24 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496
+class ComposerStaticInitc9318ef1ce40ef8bfe10d132f10ba593
 {
     public static $files = array (
-        'a4ecaeafb8cfb009ad0e052c90355e98' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/functions.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
-            'Psr\\Cache\\' => 10,
         ),
         'M' => 
         array (
             'Minishlink\\WebPush\\' => 19,
-            'Mdanter\\Ecc\\' => 12,
         ),
         'K' => 
         array (
@@ -35,7 +29,9 @@ class ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496
         ),
         'J' => 
         array (
-            'Jose\\' => 5,
+            'Jose\\Component\\Signature\\' => 25,
+            'Jose\\Component\\KeyManagement\\' => 29,
+            'Jose\\Component\\Core\\' => 20,
         ),
         'G' => 
         array (
@@ -51,42 +47,32 @@ class ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496
         array (
             'Base64Url\\' => 10,
         ),
-        'A' => 
-        array (
-            'Assert\\' => 7,
-            'AESKW\\' => 6,
-            'AESGCM\\' => 7,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
         'Minishlink\\WebPush\\' => 
         array (
             0 => __DIR__ . '/..' . '/minishlink/web-push/src',
         ),
-        'Mdanter\\Ecc\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mdanter/ecc/src',
-        ),
         'Konekt\\PdfInvoice\\' => 
         array (
             0 => __DIR__ . '/..' . '/konekt/pdf-invoice/src',
         ),
-        'Jose\\' => 
+        'Jose\\Component\\Signature\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spomky-labs/jose/src',
+            0 => __DIR__ . '/..' . '/web-token/jwt-signature',
+        ),
+        'Jose\\Component\\KeyManagement\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/web-token/jwt-key-mgmt',
+        ),
+        'Jose\\Component\\Core\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/web-token/jwt-core',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -108,18 +94,6 @@ class ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496
         array (
             0 => __DIR__ . '/..' . '/spomky-labs/base64url/src',
         ),
-        'Assert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/beberlei/assert/lib/Assert',
-        ),
-        'AESKW\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spomky-labs/aes-key-wrap/src',
-        ),
-        'AESGCM\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spomky-labs/php-aes-gcm/src',
-        ),
     );
 
     public static $classMap = array (
@@ -129,9 +103,9 @@ class ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit22f46b28f4e154e687a98e4fdf13c496::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc9318ef1ce40ef8bfe10d132f10ba593::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc9318ef1ce40ef8bfe10d132f10ba593::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc9318ef1ce40ef8bfe10d132f10ba593::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -5,7 +5,7 @@
   $lang['due'] 			= 'Due date';
   $lang['to'] 			= 'Billing to';
   $lang['from'] 		= 'Billing from';
-  $lang['product'] 		= 'Product';
+  $lang['product'] 		= 'Service Name';
   $lang['qty'] 			= 'Qty';
   $lang['price'] 		= 'Price';
   $lang['discount'] 	= 'Discount';

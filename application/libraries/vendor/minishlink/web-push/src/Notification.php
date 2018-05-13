@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the WebPush library.
  *
@@ -13,17 +15,11 @@ namespace Minishlink\WebPush;
 
 class Notification
 {
-    /** @var string */
-    private $endpoint;
+    /** @var Subscription */
+    private $subscription;
 
-    /** @var string */
+    /** @var null|string */
     private $payload;
-
-    /** @var string */
-    private $userPublicKey;
-
-    /** @var string */
-    private $userAuthToken;
 
     /** @var array Options : TTL, urgency, topic */
     private $options;
@@ -31,46 +27,36 @@ class Notification
     /** @var array Auth details : GCM, VAPID */
     private $auth;
 
-    public function __construct($endpoint, $payload, $userPublicKey, $userAuthToken, $options, $auth)
+    /**
+     * Notification constructor.
+     *
+     * @param Subscription $subscription
+     * @param null|string $payload
+     * @param array $options
+     * @param array $auth
+     */
+    public function __construct(Subscription $subscription, ?string $payload, array $options, array $auth)
     {
-        $this->endpoint = $endpoint;
+        $this->subscription = $subscription;
         $this->payload = $payload;
-        $this->userPublicKey = $userPublicKey;
-        $this->userAuthToken = $userAuthToken;
         $this->options = $options;
         $this->auth = $auth;
     }
 
     /**
-     * @return string
+     * @return Subscription
      */
-    public function getEndpoint()
+    public function getSubscription(): Subscription
     {
-        return $this->endpoint;
+        return $this->subscription;
     }
 
     /**
      * @return null|string
      */
-    public function getPayload()
+    public function getPayload(): ?string
     {
         return $this->payload;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getUserPublicKey()
-    {
-        return $this->userPublicKey;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getUserAuthToken()
-    {
-        return $this->userAuthToken;
     }
 
     /**
@@ -78,7 +64,7 @@ class Notification
      *
      * @return array
      */
-    public function getOptions(array $defaultOptions = array())
+    public function getOptions(array $defaultOptions = []): array
     {
         $options = $this->options;
         $options['TTL'] = array_key_exists('TTL', $options) ? $options['TTL'] : $defaultOptions['TTL'];
@@ -93,7 +79,7 @@ class Notification
      *
      * @return array
      */
-    public function getAuth(array $defaultAuth)
+    public function getAuth(array $defaultAuth): array
     {
         return count($this->auth) > 0 ? $this->auth : $defaultAuth;
     }
