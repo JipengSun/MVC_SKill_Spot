@@ -62,7 +62,7 @@
 <div class="top">
     <div class="top-bar">
         <div class="home-holder">
-            <a href="index.html"> <img src="<?php echo base_url();?>img/home.png" class="home-icon"></a>
+            <a href="<?php echo site_url('indice/index');?>"> <img src="<?php echo base_url();?>img/home.png" class="home-icon"></a>
         </div>
 
         <div class = "account-setup" id="account-before-login">

@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = '';
+//$config['base_url'] = 'https://infs3202-2c1135b8.uqcloud.net/Skill_Spot';
+//$config['base_url'] = 'ec2-52-63-94-78.ap-southeast-2.compute.amazonaws.com/Skill_Spot';
 
 /*
 |--------------------------------------------------------------------------

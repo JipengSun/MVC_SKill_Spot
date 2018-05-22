@@ -98,6 +98,8 @@ switch (ENVIRONMENT)
  * Set the path if it is not in the same directory as this file.
  */
 	$system_path = '/Applications/XAMPP/xamppfiles/htdocs/system';
+	//$system_path = '/var/www/htdocs/system';
+	//$system_path = '/var/www/html/system'
 
 /*
  *---------------------------------------------------------------
@@ -115,6 +117,9 @@ switch (ENVIRONMENT)
  * NO TRAILING SLASH!
  */
 	$application_folder = '/Applications/XAMPP/xamppfiles/htdocs/application';
+	//$application_folder = '/var/www/htdocs/application';
+	//$application_folder = '/var/www/html/application';
+
 
 /*
  *---------------------------------------------------------------
@@ -130,6 +135,9 @@ switch (ENVIRONMENT)
  * NO TRAILING SLASH!
  */
 	$view_folder = '/Applications/XAMPP/xamppfiles/htdocs/application/views';
+	//$view_folder = '/var/www/htdocs/application/views';
+	//$view_folder = '/var/www/html/application/views';
+
 
 
 /*

@@ -73,7 +73,8 @@ function subSignup() {
 }
 
 function logout() {
-     document.getElementById("account-before-login").style.display="block";
-     document.getElementById("account-after-login").style.display="none";
+     //document.getElementById("account-before-login").style.display="block";
+     //document.getElementById("account-after-login").style.display="none";
+     //location.reload();
 }
 

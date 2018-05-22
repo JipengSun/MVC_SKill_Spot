@@ -17,11 +17,8 @@ class Notification{
                 'endpoint'=>'https://updates.push.services.mozilla.com/push/abc...',
                 'publicKey'=>'',
                 'authToken'=>'',
+                'contentEncoding'=>'aesgcm',
             ]),'payload'=>'hello! Jipeng'],
-                [
-                    'subscription'=>Subscription::create([
-                        'endpoint'=>'https://android.googleapis.com/gcm/send/abcdef...']),'payload'=>null,
-                ],
                 [
                     'subscription'=>Subscription::create([
                         'endpoint'=>'https://example.com/other/endpoint/of/another/vendor/abcdef...',
