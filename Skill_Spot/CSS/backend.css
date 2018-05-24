@@ -1,0 +1,78 @@
+.backend-top {
+    width: 1000px;
+    min-height: 800px;
+    margin: 0px auto;
+}
+
+.page-select{
+    margin: 0px auto;
+    width: 900px;
+}
+
+.tab-btn{
+    -webkit-appearance:button;
+    width: 100px;
+    heght: 80px;
+    /*padding: 25px 15px;*/
+    font-size: 15px;
+}
+
+.page {
+    text-align: left;
+    overflow-y: scroll;
+    width: 900px;
+    margin: 0px auto;
+    height: 700px;
+    /*background-color: #3A8DB0;*/
+}
+
+table.table-size {
+    width: 800px;
+    table-layout:fixed;
+    border-collapse: collapse;
+}
+
+table.table-size th,td{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+table.table-size tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#mail-out-box {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    /*background-color: #00FF00;*/
+}
+
+.mail-content {
+    /*position: absolute;*/
+    /*top: 200px;*/
+    /*left: 40%;*/
+
+    margin: 150px auto;
+    overflow-y: scroll;
+    height:400px;
+    width: 550px;
+    background-color: white;
+    z-index: 2;
+    border: solid 1px #999999;
+
+}
+
+.mail-subject {
+    cursor: pointer;
+}
+
+#close {
+    cursor: pointer;
+}

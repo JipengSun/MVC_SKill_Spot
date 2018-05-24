@@ -187,7 +187,7 @@
     text-align: center;
     height: 40px;
     padding-top: 100px;
-    display: none;
+    /*display: none;*/
 }
 
 .textbox-search{

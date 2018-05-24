@@ -8,7 +8,7 @@
 }
 
 .main{
-    overflow: auto;
+    /*overflow: auto;*/
     width: 1000px;
     margin:0 auto;
 
@@ -17,7 +17,7 @@
 .personal-info{
     float: left;
     font-size: 15px;
-    width: 400px;
+    width: 500px;
     text-align: left;
     margin-left: 50px;
     /*background-color: #888888;*/
@@ -25,23 +25,25 @@
 
 .personal-img{
     float: right;
-    width: 500px;
+    width: 400px;
     text-align: left;
     /*background-color: #eeddff;*/
 }
 
-#preview{
-    width: 150px;
-    height: 180px;
-    background-color: #BBBBBB;
+/*.warn-text{*/
+    /*font-size: 10px;*/
+    /*color: red;*/
+/*}*/
+
+.service{
+    margin-left: 50px
 }
 
-#preview img{
-    width: 150px;
-    height: 180px;
+.service-price{
+    width: 50px;
 }
 
-.warn-text{
-    font-size: 10px;
-    color: red;
+.service-addr{
+    width: 200px;
 }
+

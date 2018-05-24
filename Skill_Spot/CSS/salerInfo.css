@@ -10,7 +10,7 @@
     height: 200px;
     overflow: auto;
     margin: 0 auto;
-    background-color: #00FF00;
+    background-color: white;
 }
 
 #personInfo{
@@ -19,7 +19,7 @@
     height:190px;
     float: left;
     padding: 30px;
-    background-color: #aadffd;
+    background-color: white;
 }
 
 #profile-container{
@@ -27,17 +27,16 @@
     height: 180px;
     float: right;
     margin: 10px;
-    background-color: #BBBBBB;
-
+    background-color: white;
 }
 
 #summary-container{
     width: 780px;
-    height:300px;
+    height:250px;
     overflow-y: scroll;
     padding: 10px;
     margin: 0 auto;
-    background-color: red;
+    background-color: white;
 }
 
 #review-container{
@@ -46,5 +45,5 @@
     overflow-y: scroll;
     padding: 10px;
     margin: 0 auto;
-    background-color: #BBBBBB;
+    background-color: white;
 }

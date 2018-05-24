@@ -1,49 +1,83 @@
+<?php
+$this->load->helper('url');
+?>
 <!DOCTYPE html>
-<html lang="en">
-<?php $this->load->helper('url');?>
+<html>
 <head>
-    <meta charset="UTF-8">
+
     <title>SKILLSPOT</title>
     <link rel="stylesheet" href="<?php echo base_url();?>CSS/profile_setup.css">
+
+
+
+    <link href="<?php echo base_url();?>CSS/croppic.css" rel="stylesheet">
+    <script src=" https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>JS/croppic/croppic.min.js"></script>
     <script src="<?php echo base_url();?>JS/profile_setup.js"></script>
+
+
+    <link href="<?php echo base_url();?>CSS/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo base_url();?>JS/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo base_url();?>JS/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo base_url();?>JS/umeditor.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>JS/lang/en/en.js"></script>
 </head>
 <body>
+
 <div id="whole">
     <div class="main">
 
-        <div class="personal-info">
-            <pre>First Name: <input type="text" id="first-name"></pre>
+        <div style="overflow: auto;">
 
-            <pre>Last Name:  <input type="text" id="last-name"></pre>
+            <div class="personal-info">
 
-            <pre>Phone:      <input type="number" id="number"></pre>
+                <pre>Name:       <input type="text" id="first-name"></pre>
 
-            <pre>Address:    <input type="text" id="address"></pre>
+                <pre>Phone:      <input type="number" id="number"></pre>
 
-            <pre>Zip:        <input type="number" id="zip"></pre>
+                <pre>Introduction:                 </pre>
 
-            <pre>Introduction:                 </pre>
-            <textarea id="personal-intro" style="width: 300px; height: 200px;"></textarea>>
+                <textarea id="myEditor" style="width:500px;height:240px;">
 
-            <pre>Please what category of service you can provide:</pre>
-            <pre> <input type="checkbox" id="handy"> Handyservice      <input type="checkbox" id="pick"> Pick&Delievery </pre>
-            <pre> <input type="checkbox" id="law"> Legal Consulting  <input type="checkbox" id="moving"> Moving</pre>
-            <pre> <input type="checkbox" id="it"> IT                <input type="checkbox" id="study"> Study</pre>
+                </textarea>
 
 
-            </pre>
+
+            </div>
+
+
+            <div class="personal-img">
+                <div id="croppic" style="width: 150px; height: 180px"></div>
+                <span id="cropContainerHeaderButton">click here to upload a photo</span>
+            </div>
+
+
         </div>
 
+        <div class="service">
+            <pre>Please what category of service you can provide:</pre>
 
-        <div class="personal-img">
-            <pre>Choose Profile:          <input type="file" onchange="preview(this)"></pre>
+            <?php
 
-            <label class="warn-text" id="set-prof-label"> </label>
-            <br>
-            <pre>Choose Background Image: <input type="file" onchange="setbackimage(this)"></pre>
-            <label class="warn-text" id="set-back-label"> </label>
-            <br>
-            <div id="preview">Profile preview</div>
+            for ($i = 0; $i < 3; $i++) {
+                echo "Type:
+            <select class=\"service-cate\">
+                <option value=\"hand\">Handyman</option>
+                <option value=\"delievery\">Delievery</option>
+                <option value=\"law\">Legal Consulting</option>
+                <option value=\"moving\">Moving</option>
+                <option value=\"it\">IT</option>
+                <option value=\"study\">Study</option>
+            </select>
+
+            Service: <input class=\"service-name\" type=\"text\">
+
+            price: <input class=\"service-price\" type=\"text\">
+
+            location: <input class=\"service-addr\" type=\"text\">"."<br>";
+            }
+            ?>
+
 
         </div>
 
@@ -51,4 +85,33 @@
 </div>
 
 </body>
+
+
+
+<script type="text/javascript">
+//实例化编辑器
+var um = UM.getEditor('myEditor');
+function getContent() {
+    var arr = UM.getEditor('myEditor').getContent();
+}
+
+var croppicHeaderOptions = {
+    cropUrl:'crop',
+    customUploadButtonId:'cropContainerHeaderButton',
+    modal:false,
+    processInline:true,
+    // onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
+    // onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+    // onImgDrag: function(){ console.log('onImgDrag') },
+    // onImgZoom: function(){ console.log('onImgZoom') },
+    // onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
+    // onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
+    // onReset:function(){ console.log('onReset') },
+    // onError:function(errormessage){ console.log('onError:'+errormessage) }
+
+}
+var croppic = new Croppic('croppic', croppicHeaderOptions);
+
+
+</script>
 </html>

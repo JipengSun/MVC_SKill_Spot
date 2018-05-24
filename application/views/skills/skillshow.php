@@ -1,22 +1,24 @@
 <!DOCTYPE html>
+<?php
+$this->load->helper('url');
+?>
 <html lang="en">
 <!--google API: AIzaSyCpHVoDMFQ1oTP-0_6_lOlE479fVQpHjN0-->
-<?php $this->load->helper('url');?>
 <head>
     <meta charset="UTF-8">
     <title>SKILLSPOT</title>
-    <script src="<?php echo base_url();?>JS/index.js"></script>
+    <script src="<?php echo base_url()?>JS/index.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyrXBYup5k3STj8LnB5OtPLfwBpDMvbiU&signed_in=true&libraries=visualization&callback=initMap">
     </script>
-    <link rel="stylesheet" href="<?php echo base_url();?>CSS/resultDisplay.css">
-    <script src="<?php echo base_url();?>JS/resultDisplay.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url();?>CSS/index.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>CSS/resultDisplay.css">
+    <script src="<?php echo base_url()?>JS/resultDisplay.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url()?>CSS/index.css">
 </head>
 <body>
 
 <div id="login-window">
-    <a href="javascript:closeLogin()"><img class="close-icon" src="<?php echo base_url();?>img/close-icon.png" ></a>
+    <a href="javascript:closeLogin()"><img class="close-icon" src="<?php echo base_url()?>img/close-icon.png" ></a>
 
     <div class="login-subwin">
         <br>
@@ -36,7 +38,7 @@
 </div>
 
 <div id="signup-window">
-    <a href="javascript:closeSignup()"><img class="close-icon" src="<?php echo base_url();?>img/close-icon.png" ></a>
+    <a href="javascript:closeSignup()"><img class="close-icon" src="<?php echo base_url()?>img/close-icon.png" ></a>
 
     <div class="signup-subwin">
         <br>
@@ -59,11 +61,15 @@
 
 <div id="black"></div>
 
-<div class="top">
+<div class="top" style="background-image: url('<?php echo base_url()?>img/back1.jpg')">
     <div class="top-bar">
         <div class="home-holder">
-            <a href="<?php echo site_url('indice/index');?>"> <img src="<?php echo base_url();?>img/home.png" class="home-icon"></a>
+            <!--            <a href="index.html"> <img src="img/home.png" class="home-icon"></a>-->
+            <span class = "logo-name">SkillSpot</span>
         </div>
+        <!--        <div class = "logo">-->
+        <!--            <span class = "logo-name">SkillSpot</span>-->
+        <!--        </div>-->
 
         <div class = "account-setup" id="account-before-login">
             <input type="button" value="Log in" class = "login-icon" onclick="openLogin()"/>
@@ -78,13 +84,6 @@
     </div>
 
 
-    <br>
-
-    <div class = "logo">
-        <span class = "logo-name">SkillSpot</span>
-    </div>
-
-    <br><br>
 
     <div class= "search-line">
         <input type="text" class = "textbox-search" id="keywords" placeholder="I'm looking for ...">

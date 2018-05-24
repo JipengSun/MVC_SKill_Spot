@@ -16,7 +16,26 @@ var myLatLng
 //         {"lat":-27.493750, "lng":153.015088, "n":"trhbh", "s":"I sale ewwe", "l": "0"}
 // ];
 
-
+var info_window = "<div class=\"info-windows\">\
+<div class=\"info-windows-photo\">\
+    <img class=\"seller-profile\" src=\"img/profile.png\">\
+    </div>\
+\
+    <div class=\"info-windows-price\">\
+    $75/h\
+\
+    </div>\
+    <img class=\"level-icon\" src=\"img/5start.png\">\
+    <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
+    <div class=\"info-windows-services\">\
+    <span style=\"font-weight: bold\">Frank Lu:<br></span>\
+repair computer\
+</div>\
+\
+<div class=\"info-windows-addr\">\
+    2 david cl, sunnybank hills\
+</div>\
+</div>";
 
 var xmlHttp = createXmlHttpRequestObject();
 
@@ -70,7 +89,7 @@ function process(){
 
         // console.log(select_value + " " + price_min + " " + level_value);
 
-        var phpmessage = "resultDisplay.php?keyword="+keyword+"&location="+location + "&cate=" +
+        var phpmessage = "resultDisplay?keyword="+keyword+"&location="+location + "&cate=" +
             cate_value + "&distance="+distance+"&min="+price_min+"&max="+price_max +
                 "&level=" +level_value;
 
@@ -87,6 +106,7 @@ function handleServerResponse(){
     if(xmlHttp.readyState==4){
         if(xmlHttp.status==200){
             xmlResponse = xmlHttp.responseXML;
+            console.log(xmlHttp.responseText);
             xmlDocumentElement = xmlResponse.documentElement;
             message = xmlDocumentElement.firstChild.data;
             var data_raw = eval ("(" + message + ")");
@@ -100,15 +120,20 @@ function handleServerResponse(){
     }
 }
 
-function createDiv(provider_info) {
+function createDiv(provider_info, marker) {
     var parent = document.getElementById("displayer-shop-list");
     var sudiv = document.createElement("div");
 
-    sudiv.style.width = "290px";
-    sudiv.style.height = "50px";
-    sudiv.style.backgroundColor = "#aadffd";
-    sudiv.style.margin = "5px auto";
-    sudiv.style.fontSize = "13px";
+    sudiv.onclick = function () {
+        google.maps.event.trigger(marker, 'click');
+    }
+
+    sudiv.className = "seller-div";
+    // sudiv.style.width = "290px";
+    // sudiv.style.height = "50px";
+    // sudiv.style.backgroundColor = "#aadffd";
+    // sudiv.style.margin = "5px auto";
+    // sudiv.style.fontSize = "13px";
 
 
     var ndiv = document.createElement("div");
@@ -156,17 +181,16 @@ function create_map() {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(myLatLng[i]["lat"], myLatLng[i]["lng"]),
             map: map
-
         });
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent(myLatLng[i]["s"]);
+                infowindow.setContent(info_window);
                 infowindow.open(map, marker);
             };
         })(marker, i));
 
-        createDiv(myLatLng[i]);
+        createDiv(myLatLng[i], marker);
     }
 
 

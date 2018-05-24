@@ -35,7 +35,9 @@ class Indice extends CI_Controller
         $this->form_validation->set_rules('signup-pw','Password','required');
         $this->form_validation->set_rules('signup-repw','Password Confirmation','required');
 	    $this->load->model('user_test');
-        $arr = array('username' => $_POST['username']);
+        //$arr = array('username' => $_POST['username']);
+        $pass = password_hash($_POST['signup-pw'],PASSWORD_BCRYPT);
+        $arr = array('username'=> $_POST['username'],'mail' =>$_POST['signup-E'],'password' =>$pass);
        // $this->session->set_userdata($arr);
 	    //$this->user_test->u_insert($arr);
         if ($this->form_validation->run()==FALSE)
@@ -47,6 +49,7 @@ class Indice extends CI_Controller
         else{
             $this->load->view('skills/skillshow');
             $this->user_test->u_insert($arr);
+
         }
     }
 
