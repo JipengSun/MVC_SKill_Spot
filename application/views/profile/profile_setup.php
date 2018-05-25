@@ -11,6 +11,7 @@ $this->load->helper('url');
 
 
     <link href="<?php echo base_url();?>CSS/croppic.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>CSS/index.css" rel="stylesheet">
     <script src=" https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>JS/croppic/croppic.min.js"></script>
     <script src="<?php echo base_url();?>JS/profile_setup.js"></script>
@@ -30,7 +31,7 @@ $this->load->helper('url');
         <div style="overflow: auto;">
 
             <div class="personal-info">
-                <form action="Profile/update" method="post">
+
 
                 <pre>Name: <input type="text" name = 'username' id="first-name"></pre>
 
@@ -41,8 +42,7 @@ $this->load->helper('url');
                 <textarea id="myEditor" style="width:500px;height:240px;">
 
                 </textarea>
-                    <input class="signup-submit" type="submit" value="Update your Info" onclick="subSignup()">
-                </form>
+
 
 
 
@@ -52,6 +52,9 @@ $this->load->helper('url');
             <div class="personal-img">
                 <div id="croppic" style="width: 150px; height: 180px"></div>
                 <span id="cropContainerHeaderButton">click here to upload a photo</span>
+                <br>
+                <br>
+                <input class="btn-get-start" type="button" value="Get start now" onclick="upload()">
             </div>
 
 
@@ -80,7 +83,7 @@ $this->load->helper('url');
 
             location: <input class=\"service-addr\" type=\"text\" name='slocation'>"."
             
-            <input class=\"signup-submit\" type=\"submit\" value=\"Submit\" onclick=\"subSignup()\"><br>";
+            <br>";
 
             }
             ?>
@@ -91,7 +94,9 @@ $this->load->helper('url');
 
     </div>
 </div>
-
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyrXBYup5k3STj8LnB5OtPLfwBpDMvbiU&callback=initMap">
+</script>
 </body>
 
 
@@ -119,6 +124,10 @@ var croppicHeaderOptions = {
 
 }
 var croppic = new Croppic('croppic', croppicHeaderOptions);
+function get_content() {
+    return UM.getEditor('myEditor').getContent();
+}
+
 
 
 </script>
