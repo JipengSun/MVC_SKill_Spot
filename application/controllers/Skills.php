@@ -36,50 +36,61 @@ class Skills extends CI_Controller
         //把上面这个换成SQL 的结果 参数全在$_GET里
 
 
+
         $keyword = $_GET["keyword"];
         $location = $_GET["location"];
         $category = $_GET["cate"];
-        $distance = $_GET["distance"];
+    //    $distance = $_GET["distance"];
         $min = $_GET["min"];
         $max = $_GET["max"];
-        $level = $_GET["level"];
+    //    $level = $_GET["level"];
 
         $constrain = "";
+        $arr = array();
 
-        $userLocation = array(123, 123);
+        //$userLocation = array(123, 123);
 
         switch (1) {
             case 1:
                 if ($_GET["keyword"] != "") {
                     $constrain = $constrain . "`description` like \"%$keyword%\"";
+                    $arr1=array('sname'=> $keyword);
                 }
 
             case 2:
                 if ($_GET["location"] != "") {
                     $constrain = $constrain . " && `location` = \"$location\"";
+                    $arr['location'] = $location;
                 }
             case 3:
                 if ($_GET["cate"] != "") {
                     $constrain = $constrain . " && `cate` like \"%$category%\"";
+                    $arr['stype'] = $category;
                 }
 
             case 4:
-                if ($_GET["distance"] != "") {
-                    $constrain = $constrain . " && （pow(lat - $userLocation[0], 2) + pow(lng - $userLocation[1], 2)）* 111 < $distance";
-                }
+      //          if ($_GET["distance"] != "") {
+      //              $constrain = $constrain . " && （pow(lat - $userLocation[0], 2) + pow(lng - $userLocation[1], 2)）* 111 < $distance";
+       //         }
             case 5:
                 if ($_GET["min"] != "") {
                     $constrain = $constrain . " && `price` > $min";
+                    $arr['price >'] = $min;
                 }
             case 6:
                 if ($_GET["max"] != "") {
                     $constrain = $constrain . " && `price` < $max";;
+                    $arr['price <'] = $max;
                 }
             case 7:
-                if ($_GET["level"] != "") {
-                    $constrain = $constrain . " && `level` = $level";
-                }
+      //          if ($_GET["level"] != "") {
+       //             $constrain = $constrain . " && `level` = $level";
+        //        }
         }
+        $this->load->model('Service_model');
+        //$z = $this->Service_model->s_search($arr,$arr1);
+        $a = $this->Service_model->listService();
+        $z = $a[1];
 
 
         header('Content-Type: text/xml');

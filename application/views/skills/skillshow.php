@@ -104,27 +104,13 @@ $this->load->helper('url');
             <option value="study">Study</option>
         </select>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;Location: &nbsp;leave me in &nbsp;
-
-        <input type="number" id="filter-location" class="filter-box"> &nbsp;km
-
-        &nbsp;&nbsp;&nbsp;&nbsp;
 
         Price: $
 
         <input type="number" id="filter-price-min" class="filter-box"> ~
         <input type="number" id="filter-price-max" class="filter-box">
 
-        &nbsp;&nbsp;&nbsp;&nbsp;Shop Level:&nbsp;
-        <select class="filter-box" id="filter-start">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-        start
+
 
     </div>
 

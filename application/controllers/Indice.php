@@ -47,8 +47,19 @@ class Indice extends CI_Controller
             //$this->load->view('indice/login');
         }
         else{
-            $this->load->view('skills/skillshow');
+            $emailsubject = 'Account Confirmation';
+            $smtpemailto = $arr['mail'];
+            $a = 'localhost/Skill_Spot/index.php/indice/activation/'.$arr['username'];
+            $emailbody =
+                '<html>
+This is your confirmation address, please copy it in your browser!
+<br> 
+<a>'.$a.'</a>
+</html> ';
+            $this->load->library('Mailer');
+            $this->mailer->sendMail($emailsubject,$emailbody,$smtpemailto);
             $this->user_test->u_insert($arr);
+            $this->load->view('skills/skillshow');
 
         }
     }
@@ -66,7 +77,7 @@ class Indice extends CI_Controller
 	    //$this->load->view('pages/about',$data);
 	    if($user){
 	        echo 'User exist';
-	        if(password_verify($_POST['login-pw'],$user[0]->password)){
+	        if(password_verify($_POST['login-pw'],$user[0]->password)&&$user[0]->activate==1){
 	            //echo 'Password Right';
 	            //$this->load->library('session');
                 //session_start();
@@ -80,7 +91,7 @@ class Indice extends CI_Controller
                     echo 'Password Right admin';
                     redirect(site_url('mynotification/index'));
                 }
-                echo 'Password Right1wrong';
+                //echo 'Password Right1wrong';
                 redirect(site_url('indice/index'));
             }
             else{
@@ -91,7 +102,7 @@ class Indice extends CI_Controller
             }
         }else{
 	        echo 'Email Wrong';
-            $this->index();
+            //$this->index();
             redirect(site_url('indice/index'));
         }
     }
@@ -109,8 +120,12 @@ class Indice extends CI_Controller
 	    //var_dump($_SESSION);
         SESSION_START();
         $this->load->helper('url');
+        session_destroy();
         unset($_SESSION['username']);
-        redirect(site_url('indice/index'));
+        //redirect(site_url('indice/index'));
+        //echo $_SESSION['username'];
+       // echo 'fjskf';
+        $this->index();
     }
     public function ajax(){
         $this->load->helper('url');
@@ -146,6 +161,30 @@ class Indice extends CI_Controller
         $this->load->view('notifs/broadcast');
         // $arr = array('notif_msg'=>$msg,'notif_time'=>$time,'username'=>$user);
 
+    }
+    public function activation($username){
+	    try{
+	        $this->load->helper('url');
+            $this->load->model('user_test');
+            $user = $this->user_test->u_selectname($username);
+            //echo gettype($user);
+            $id = $user[0]->uid;
+            $arr = ['activate' => 1];
+            $this->user_test->u_update($id, $arr);
+            //session_start();
+            //$_SESSION['username'] = $user[0]->username;
+            //sleep(3);
+            //echo 'You have successfully activated your account! ENJOY SkillSpot!';
+            //sleep(3);
+            $data['alertinfo'] = 'You have successfully activated your account! ENJOY SkillSpot!';
+            $this->load->view('pages/alertpage',$data);
+            //redirect(site_url('indice/index'));
+            //$this->index();
+        }catch (Exception $exception){
+                echo "Activation Failure";
+                sleep(3);
+
+            }
     }
 
 }

@@ -76,5 +76,6 @@ function logout() {
      //document.getElementById("account-before-login").style.display="block";
      //document.getElementById("account-after-login").style.display="none";
      //location.reload();
+	//window.location.href="<?php echo site_url('indice/index') ?>";
 }
 

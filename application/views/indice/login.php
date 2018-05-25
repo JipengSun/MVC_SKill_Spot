@@ -24,7 +24,7 @@ $user = $sql->listUser();
 
     <div class="login-subwin">
         <h5><?php echo validation_errors();?></h5>
-        <form action="login" method="post">
+        <form action="<?php echo site_url('indice/login')?>" method="post">
         <br>
         <br>
         E-address:&nbsp <input id="login-E" name = 'email' type="text">
@@ -46,7 +46,7 @@ $user = $sql->listUser();
 
     <div class="signup-subwin">
         <h5><?php echo validation_errors();?></h5>
-        <form action="register" method="post">
+        <form action="<?php echo site_url('indice/register')?>" method="post">
         <br>
         <br>
         Username:&nbsp
@@ -100,6 +100,7 @@ $user = $sql->listUser();
     <?php
     @session_start();
     if (isset($_SESSION["username"])) {
+        //echo $_SESSION['username'];
         echo "<div class = \"account-setup\" id = \"account-after-login\">";
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
         echo '<script src=';
@@ -107,10 +108,11 @@ $user = $sql->listUser();
         echo 'JS/mynotif.js ></script>';
     } else {
         echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
+        //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
     }
     ?>
             <a id="id-after-login" href="<?php echo site_url('profile/setup')?> "><?php echo $_SESSION["username"]?></a>
-            <input type="submit"  href="<?php echo site_url('indice/logout')?> " value="log out" class = "logout-icon" onclick="logout()" />
+    <a id="id-after-login" href="<?php echo site_url('indice/logout')?> "><?php echo 'Log Out'?></a>
         </div>
 
     </div>
@@ -126,9 +128,11 @@ $user = $sql->listUser();
             <input class="btn-get-start" type="button" value="Get start now" onclick="getStart()">
         </div>
         <div class= "search-line" id= "search-line">
-            <input type="text" class = "textbox-search" placeholder="I'm looking for ...">
-            <input type="text" class = "textbox-location" placeholder="Location">
-            <input type="button" value="Go" class = "search-btn"/>
+            <form action= "<?php echo site_url('Skills/show')?>" >
+            <input type="text" class = "textbox-search" placeholder="I'm looking for ..." name = 'e_sname'>
+            <input type="text" class = "textbox-location" placeholder="Location" name="e_location">
+            <input type="submit" value="Go" class = "search-btn"/>
+            </form>
         </div>
 
     </div>

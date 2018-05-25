@@ -7,3 +7,4 @@
 ## 1.4 PDF Generation Function.</br>
 ## 1.5 Push Notification Function. </br>
 ## 1.6 Integrate with front end code </br>
+## 1.7 Service Search and Image Crop </br>

@@ -15,8 +15,12 @@ class Profile extends CI_Controller
 	public function setup(){
 
 		//$this->load->view('templates/header',$data);
+        session_start();
+        echo $_SESSION['username'];
 
 		$this->load->view('profile/profile_setup');
+
+
 	}
 	public function crop(){
 	    $this->load->helper('url');
@@ -38,8 +42,11 @@ class Profile extends CI_Controller
         $angle = $_POST['rotation'];
 
         $jpeg_quality = 100;
+        session_start();
+        //Need to change when deploying on the server.
+        $output_filename = "/Applications/XAMPP/xamppfiles/htdocs/Skill_Spot/img/tmp/avatar_".$_SESSION['username'];
 
-        $output_filename = base_url()."croppedImg_".rand();
+        $output_filename2 = base_url()."img/tmp/avatar_".$_SESSION['username'];
 
         // uncomment line below to save the cropped image in the same location as the original image.
         //$output_filename = dirname($imgUrl). "/croppedImg_".rand();
@@ -101,9 +108,35 @@ class Profile extends CI_Controller
             imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
             $response = Array(
                 "status" => 'success',
-                "url" => $output_filename.$type
+                "url" => $output_filename2.$type
             );
         }
         print json_encode($response);
-            }
+	}
+	public function update(){
+        $this->load->model('user_test');
+        $user = $this->user_test->u_selectname($_SESSION['username']);
+        $id = $user[0]->uid;
+        $arr1 = ['activate' => 1];
+        $this->user_test->u_update($id, $arr1);
+
+    }
+    public function collectinfo(){
+	    session_start();
+        $this->load->model('user_test');
+        $this->load->model('Service_model');
+        $user = $this->user_test->u_selectname($_SESSION['username']);
+        $id = $user[0]->uid;
+        $arr = array(
+            'uid'=>$id,
+            'username'=>$_SESSION['username'],
+            'sname'=>$_POST['sname'],
+            'stype'=>$_POST['stype'],
+            'price'=>$_POST['price'],
+            'slocation'=>$_POST['slocation']);
+        $this->Service_model->s_insert($arr);
+        echo 'Success';
+    }
+
+
 }

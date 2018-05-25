@@ -76,22 +76,21 @@ function process(){
         var cate_index = cate.selectedIndex;
         var cate_value = cate.options[cate_index].value;
 
-        var distance = document.getElementById("filter-location").value;
+    //    var distance = document.getElementById("filter-location").value;
         var price_min = document.getElementById("filter-price-min").value;
         var price_max = document.getElementById("filter-price-max").value;
 
-        var level = document.getElementById('filter-start');
-        var level_index = level.selectedIndex;
-        var level_value = level.options[level_index].value;
+    //    var level = document.getElementById('filter-start');
+    //    var level_index = level.selectedIndex;
+		//   var level_value = level.options[level_index].value;
 
-        var keyword = document.getElementById("keywords").value;
-        var location = document.getElementById("location").value;
+        var e_sname = document.getElementById("keywords").value;
+        var e_location = document.getElementById("location").value;
 
         // console.log(select_value + " " + price_min + " " + level_value);
 
-        var phpmessage = "resultDisplay?keyword="+keyword+"&location="+location + "&cate=" +
-            cate_value + "&distance="+distance+"&min="+price_min+"&max="+price_max +
-                "&level=" +level_value;
+        var phpmessage = "resultDisplay?keyword="+e_sname+"&location="+e_location + "&cate=" +
+            cate_value+ "&min="+price_min+"&max="+price_max ;
 
         console.log(phpmessage);
         xmlHttp.open("GET", phpmessage,true);
@@ -141,14 +140,14 @@ function createDiv(provider_info, marker) {
     ndiv.style.height = "15px";
     // ndiv.style.backgroundColor = "green";
     ndiv.style.float = "left";
-    ndiv.innerHTML = "Name: " + provider_info["n"];
+    ndiv.innerHTML = "Provider: " + provider_info["username"];
 
     var level_div = document.createElement("div");
     level_div.style.width = "50px";
     level_div.style.height = "15px";
     // level_div.style.backgroundColor = "yellow";
     level_div.style.float = "right";
-    level_div.innerHTML = "level: " + provider_info["l"];
+    level_div.innerHTML = provider_info["price"]+'$';
 
     var summary_div = document.createElement("div");
     summary_div.style.width = "290px";
@@ -156,7 +155,7 @@ function createDiv(provider_info, marker) {
     // summary_div.style.backgroundColor = "red";
     summary_div.style.overflow = "hidden";
     summary_div.style.textOverflow = "ellipsis";
-    summary_div.innerHTML = provider_info["s"];
+    summary_div.innerHTML = provider_info["sname"];
 
     var container = document.createElement("div");
     container.style.overflow = "auto";

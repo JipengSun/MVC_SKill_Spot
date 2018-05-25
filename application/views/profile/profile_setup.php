@@ -30,16 +30,19 @@ $this->load->helper('url');
         <div style="overflow: auto;">
 
             <div class="personal-info">
+                <form action="Profile/update" method="post">
 
-                <pre>Name:       <input type="text" id="first-name"></pre>
+                <pre>Name: <input type="text" name = 'username' id="first-name"></pre>
 
-                <pre>Phone:      <input type="number" id="number"></pre>
+                <pre>Phone:<input type="number" name = 'phone' id="number"></pre>
 
                 <pre>Introduction:                 </pre>
 
                 <textarea id="myEditor" style="width:500px;height:240px;">
 
                 </textarea>
+                    <input class="signup-submit" type="submit" value="Update your Info" onclick="subSignup()">
+                </form>
 
 
 
@@ -55,13 +58,14 @@ $this->load->helper('url');
         </div>
 
         <div class="service">
+            <form action="collectinfo" method="post">
             <pre>Please what category of service you can provide:</pre>
 
             <?php
 
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; $i < 1; $i++) {
                 echo "Type:
-            <select class=\"service-cate\">
+            <select class=\"service-cate\" name='stype'>
                 <option value=\"hand\">Handyman</option>
                 <option value=\"delievery\">Delievery</option>
                 <option value=\"law\">Legal Consulting</option>
@@ -70,13 +74,17 @@ $this->load->helper('url');
                 <option value=\"study\">Study</option>
             </select>
 
-            Service: <input class=\"service-name\" type=\"text\">
+            Service: <input class=\"service-name\" type=\"text\" name='sname'>
 
-            price: <input class=\"service-price\" type=\"text\">
+            price: <input class=\"service-price\" type=\"number\" name='price'>
 
-            location: <input class=\"service-addr\" type=\"text\">"."<br>";
+            location: <input class=\"service-addr\" type=\"text\" name='slocation'>"."
+            
+            <input class=\"signup-submit\" type=\"submit\" value=\"Submit\" onclick=\"subSignup()\"><br>";
+
             }
             ?>
+            </form>
 
 
         </div>
