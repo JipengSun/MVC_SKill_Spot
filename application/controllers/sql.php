@@ -47,7 +47,7 @@ class sql extends dbconn {
 			return $stat;
 		}
 	}
-	
+
 	public function listNotifUser($user){
 		$db = $this->dblocal;
 		try
@@ -55,10 +55,11 @@ class sql extends dbconn {
 			$stmt = $db->prepare("SELECT * FROM notif
 				WHERE username= :user
 				AND notif_loop > 0
-				AND notif_time <= CURRENT_TIMESTAMP()");
+				AND notif_time > CURRENT_TIMESTAMP()");
 			$stmt->bindParam("user", $user);
 			$stmt->execute();
 			$stat[0] = true;
+			$stat[3] = $stmt;
 			$stat[1] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$stat[2] = $stmt->rowCount();
 			return $stat;
@@ -94,12 +95,12 @@ class sql extends dbconn {
 			return $stat;
 		}
 	}
-	
+
 	public function listUser(){
 		$db = $this->dblocal;
 		try
 		{
-			$stmt = $db->prepare("select * from user");
+			$stmt = $db->prepare("select * from User");
 			$stmt->execute();
 			$stat[0] = true;
 			$stat[1] = $stmt->fetchAll(PDO::FETCH_ASSOC);

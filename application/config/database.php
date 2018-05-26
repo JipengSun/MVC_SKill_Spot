@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => 'engg4802.cxqyuivrdn6q.ap-southeast-2.rds.amazonaws.com',
+	'username' => 'lvzheng18',
+	'password' => 'lv15131307',
 	'database' => 'SkillSpot',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

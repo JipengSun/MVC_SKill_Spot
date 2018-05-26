@@ -4,7 +4,7 @@ include "isLogin.php";
 include "dbconn.php";
 include "sql.php";
 $sql = new sql();
-$user = $sql->listUser();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +52,8 @@ $user = $sql->listUser();
 			<tr>
 				<td>For</td>
 				<td><select name="user">
-					<?php 
+					<?php
+                    $user = $sql->listUser();
 					foreach ($user[1] as $key) {
 						?>
 						<option value="<?php echo $key['username'] ?>"><?php echo $key['username'] ?></option>

@@ -171,7 +171,7 @@ function createDiv(provider_info, marker) {
 
 function create_map() {
     map = new google.maps.Map(document.getElementById('displayer-map'), {
-        zoom: 13,center: new google.maps.LatLng(myLatLng[0]["lat"], myLatLng[0]["lng"]),
+        zoom: 13,center: new google.maps.LatLng(myLatLng[0]["slat"], myLatLng[0]["slng"]),
         mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     var infowindow = new google.maps.InfoWindow();
@@ -190,17 +190,17 @@ function create_map() {
             <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
             <div class=\"info-windows-services\">\
             <span style=\"font-weight: bold\">"+ myLatLng[i]["username"] + ":<br></span>" +
-            myLatLng[i]["service"] +
+            myLatLng[i]["sname"] +
             "</div>\
             \
             <div class=\"info-windows-addr\">" +
-            myLatLng[i]["address"] +
+            myLatLng[i]["slocation"] +
             "</div>\
             </div>";
 
 
         marker = new google.maps.Marker({
-            position: new google.maps.LatLng(myLatLng[i]["lat"], myLatLng[i]["lng"]),
+            position: new google.maps.LatLng(myLatLng[i]["slat"], myLatLng[i]["slng"]),
             map: map
         });
 

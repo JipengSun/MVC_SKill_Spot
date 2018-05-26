@@ -132,13 +132,15 @@ This is your confirmation address, please copy it in your browser!
         //$this->load->model('Notif_model');
         SESSION_START();
         //$this->load->library('session');
-        include "isLogin.php";
+        //include "isLogin.php";
         include 'dbconn.php';
         include'sql.php';
         $sql = new sql();
         $array=array();
         $rows=array();
+        //echo $_SESSION['username'];
         $listnotif = $sql->listNotifUser($_SESSION['username']);
+        //echo var_dump($listnotif);
         //$listnotif = $this->Notif_model->listNotifUser($_SESSION['username']);
         foreach ($listnotif[1] as $key) {
             $data['title'] = 'Notification Title';
@@ -153,6 +155,7 @@ This is your confirmation address, please copy it in your browser!
 
         }
         $array['notif'] = $rows;
+        $array['stmt'] = $listnotif[3];
         $array['count'] = $listnotif[2];
         $array['result'] = $listnotif[0];
         echo json_encode($array);
