@@ -128,7 +128,7 @@ function upload(){
                 var cate_value = cate.options[cate_index].value;
                 var lat = results[0].geometry.location.lat();
                 var lng = results[0].geometry.location.lng();
-                var getmessage = "Profile/update?name=" + name + "&number=" + number + "&summary=" + summary + "&cate=" +
+                var getmessage = "collectinfo?name=" + name + "&number=" + number + "&summary=" + summary + "&cate=" +
                     cate_value + "&service=" + service + "&price=" + price + "&addr=" + addr + "&lat="+lat+"&lng="+lng;
                 console.log(getmessage);
                 xmlHttp.open("GET", getmessage,true);

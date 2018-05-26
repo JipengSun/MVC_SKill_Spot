@@ -33,11 +33,11 @@ $this->load->helper('url');
             <div class="personal-info">
 
 
-                <pre>Name: <input type="text" name = 'username' id="first-name"></pre>
+                <pre>Real Name: <input type="text" name = 'username' id="first-name"></pre>
 
-                <pre>Phone:<input type="number" name = 'phone' id="number"></pre>
+                <pre>Phone Number:<input type="number" name = 'phone' id="number"></pre>
 
-                <pre>Introduction:                 </pre>
+                <pre>Talk about yourself:                 </pre>
 
                 <textarea id="myEditor" style="width:500px;height:240px;">
 
@@ -54,15 +54,14 @@ $this->load->helper('url');
                 <span id="cropContainerHeaderButton">click here to upload a photo</span>
                 <br>
                 <br>
-                <input class="btn-get-start" type="button" value="Get start now" onclick="upload()">
+                <input class="btn-get-start" type="button" value="Save your Profile" onclick="upload()">
             </div>
 
 
         </div>
 
         <div class="service">
-            <form action="collectinfo" method="post">
-            <pre>Please what category of service you can provide:</pre>
+            <pre>Please tell us what kind of service you want to provide:</pre>
 
             <?php
 
@@ -77,17 +76,16 @@ $this->load->helper('url');
                 <option value=\"study\">Study</option>
             </select>
 
-            Service: <input class=\"service-name\" type=\"text\" name='sname'>
+            Name: <input class=\"service-name\" type=\"text\" name='sname'>
 
-            price: <input class=\"service-price\" type=\"number\" name='price'>
+            Price: <input class=\"service-price\" type=\"number\" name='price'>
 
-            location: <input class=\"service-addr\" type=\"text\" name='slocation'>"."
+            Location: <input class=\"service-addr\" type=\"text\" name='slocation'>"."
             
             <br>";
 
             }
             ?>
-            </form>
 
 
         </div>

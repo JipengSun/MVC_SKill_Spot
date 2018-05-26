@@ -130,7 +130,7 @@ class Profile extends CI_Controller
 	    $result = explode(",", $mesg);
 	    $string = "";
 	    foreach ($result as $char) {
-	        $string += chr((int)$char);
+	        $string .= chr((int)$char);
         }
 
         return $string;
@@ -145,10 +145,12 @@ class Profile extends CI_Controller
         $arr = array(
             'uid'=>$id,
             'username'=>$_SESSION['username'],
-            'sname'=>$_POST['sname'],
-            'stype'=>$_POST['stype'],
-            'price'=>$_POST['price'],
-            'slocation'=>$_POST['slocation']);
+            'sname'=>$this->ascdecode($_GET['service']),
+            'stype'=>$_GET['cate'],
+            'price'=>$_GET['price'],
+            'slocation'=>$this->ascdecode($_GET['addr']),
+            'slat' => $_GET['lat'],
+            'slng' => $_GET['lng']);
         $this->Service_model->s_insert($arr);
         echo 'Success';
     }
