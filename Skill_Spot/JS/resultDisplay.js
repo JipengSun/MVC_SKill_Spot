@@ -2,7 +2,7 @@
  * Created by zhenglu on 30/3/18.
  */
 
-var myLatLng
+var myLatLng;
 //     = [
 //         {"lat":-27.498625, "lng":153.015951, "n":"Mr Fuck", "s":"I sale assignmentddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "l": "3"},//n:name; s:summary; l:level
 //         {"lat":-27.498812, "lng":153.015690, "n":"Lv", "s":"I sale bike", "l": "1"},
@@ -15,6 +15,7 @@ var myLatLng
 //         {"lat":-27.494145, "lng":153.013574, "n":"fghf", "s":"I sale bbv", "l": "1"},
 //         {"lat":-27.493750, "lng":153.015088, "n":"trhbh", "s":"I sale ewwe", "l": "0"}
 // ];
+var salerURL = "http://[::1]/Skill_Spot/index.php/Salerinfo/show/";
 
 // var info_window = "<div class=\"info-windows\">\
 // <div class=\"info-windows-photo\">\
@@ -57,7 +58,7 @@ function createXmlHttpRequestObject(){
     }
 
     if(!xmlHttp)
-        alert("Cant create that object !")
+        alert("Cant create that object !");
     else
         return xmlHttp;
 }
@@ -111,7 +112,11 @@ function handleServerResponse(){
             var data_raw = eval ("(" + message + ")");
             console.log(data_raw);
             myLatLng = data_raw;
-            create_map();
+
+            if (data_raw.length > 0) {
+                create_map();
+            }
+
 
         }else{
             alert('Someting went wrong !');
@@ -170,15 +175,17 @@ function createDiv(provider_info, marker) {
 }
 
 function create_map() {
+    document.getElementById("displayer-shop-list").innerHTML = "";
     map = new google.maps.Map(document.getElementById('displayer-map'), {
         zoom: 13,center: new google.maps.LatLng(myLatLng[0]["slat"], myLatLng[0]["slng"]),
         mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     var infowindow = new google.maps.InfoWindow();
     var i;
+    var info_window = [];
     for (i = 0; i < myLatLng.length; i++) {
 
-        var info_window = "<div class=\"info-windows\">\
+        var temp = "<div class=\"info-windows\">\
 <div class=\"info-windows-photo\">\
     <img class=\"seller-profile\" src=\"" + myLatLng[i]["profile"] + "\">\
     </div>\
@@ -187,7 +194,8 @@ function create_map() {
             myLatLng[i]["price"] + " $/h" +
 
             "</div>\
-            <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
+            <a href="+ salerURL+ myLatLng[i]["username"] + "><input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
+            </a>\
             <div class=\"info-windows-services\">\
             <span style=\"font-weight: bold\">"+ myLatLng[i]["username"] + ":<br></span>" +
             myLatLng[i]["sname"] +
@@ -198,6 +206,7 @@ function create_map() {
             "</div>\
             </div>";
 
+        info_window.push(temp);
 
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(myLatLng[i]["slat"], myLatLng[i]["slng"]),
@@ -206,7 +215,7 @@ function create_map() {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent(info_window);
+                infowindow.setContent(info_window[i]);
                 infowindow.open(map, marker);
             };
         })(marker, i));
