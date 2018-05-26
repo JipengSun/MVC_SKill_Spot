@@ -50,12 +50,13 @@ class Service_model extends CI_Model {
         $this->db->delete('Service');
     }
 
-    function s_search($arr,$arr1){
-        $this->db->where($arr);
-        //$this->db->like($arr1);
-        $this->db->select('*');
-        $query = $this->db->get('Service');
-        return $query;
+    function s_search($wherearr,$likearr){
+        $query = $this->db->select('*')
+            ->from('Service')
+            ->where($wherearr)
+            ->like($likearr)
+            ->get();
+        return $query->result_array();
     }
 
 }
