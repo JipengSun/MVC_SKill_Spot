@@ -67,7 +67,7 @@ $this->load->helper('url');
             <!--            <a href="index.html"> <img src="img/home.png" class="home-icon"></a>-->
             <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
                 <span class = "logo-name">SkillSpot</span></a>
-            
+
         </div>
         <!--        <div class = "logo">-->
         <!--            <span class = "logo-name">SkillSpot</span>-->

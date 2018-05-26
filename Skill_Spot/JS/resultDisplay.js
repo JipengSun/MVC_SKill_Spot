@@ -1,5 +1,5 @@
 /**
- * Created by zhenglu on 30/3/18.
+ * Created by zhenglu on 31/3/18.
  */
 
 var myLatLng;
@@ -107,8 +107,9 @@ function handleServerResponse(){
         if(xmlHttp.status==200){
             xmlResponse = xmlHttp.responseXML;
             console.log(xmlHttp.responseText);
-            xmlDocumentElement = xmlResponse.documentElement;
-            message = xmlDocumentElement.firstChild.data;
+            // xmlDocumentElement = xmlResponse.documentElement;
+            // message = xmlDocumentElement.firstChild.data;
+            message = xmlHttp.responseText;
             var data_raw = eval ("(" + message + ")");
             console.log(data_raw);
             myLatLng = data_raw;

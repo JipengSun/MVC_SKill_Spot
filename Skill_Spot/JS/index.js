@@ -44,10 +44,12 @@ function subLogin() {
             document.getElementById("login-window").style.display="none";
             document.getElementById("black").style.display="none";
             document.getElementById("account-before-login").style.display="none";
-            document.getElementById("account-after-login").style.display="block";
-
-            document.getElementById('id-after-login').innerText="lvzheng";
+            // document.getElementById("account-after-login").style.display="block";
+            //
+            // document.getElementById('id-after-login').innerText="lvzheng";
     }
+
+    location.reload();
 
 }
 

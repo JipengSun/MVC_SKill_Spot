@@ -100,12 +100,9 @@ class Skills extends CI_Controller
         //echo var_dump($z);
 
 
-        header('Content-Type: text/xml');
-        echo '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>';
-
-        echo '<response>';
+        
         echo json_encode($z);
-        echo '</response>';
+        
 
 
     }

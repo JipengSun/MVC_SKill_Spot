@@ -113,13 +113,21 @@ $this->load->helper('url');
         echo '<script src=';
         echo base_url();
         echo 'JS/mynotif.js ></script>';
+        $name = $_SESSION["username"];
+        $url1 = site_url('backend/list')."/". $name;
+        $url2 = site_url('profile/setup')."/".$name;
+        $url3 = site_url('indice/logout');
+
+        echo "<a \" href=\"$url1\">Backend</a>";
+        echo "&nbsp;";
+        echo "<a \" href=\"$url2\">$name</a>";
+        echo "&nbsp;";
+        echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
     } else {
         echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
         //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
     }
     ?>
-    <a id="id-after-login" href="<?php echo site_url('profile/setup')?> "><?php echo $_SESSION["username"]?></a>
-    <a id="id-after-login" href="<?php echo site_url('indice/logout')?> "><?php echo 'Log Out'?></a>
 </div>
 
 </div>
