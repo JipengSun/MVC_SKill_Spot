@@ -57,20 +57,20 @@ class Skills extends CI_Controller
                 if ($_GET["keyword"] != "") {
                    // $constrain = $constrain . "`description` like \"%$keyword%\"";
                    // $arr1=array('sname'=> $keyword);
-                    $likearr['sname'] = $keyword;
+                    $likearr['Service.sname'] = $keyword;
                 }
 
             case 2:
                 if ($_GET["location"] != "") {
                     //$constrain = $constrain . " && `location` = \"$location\"";
                     //$arr['location'] = $location;
-                    $likearr['slocation'] = $location;
+                    $likearr['Service.slocation'] = $location;
                 }
             case 3:
                 if ($_GET["cate"] != "") {
                     //$constrain = $constrain . " && `cate` like \"%$category%\"";
                     //$arr['stype'] = $category;
-                    $wherearr['stype'] = $category;
+                    $wherearr['Service.stype'] = $category;
                 }
 
             case 4:
@@ -81,13 +81,13 @@ class Skills extends CI_Controller
                 if ($_GET["min"] != "") {
                     //$constrain = $constrain . " && `price` > $min";
                     //$arr['price >'] = $min;
-                    $wherearr['price >='] = $min;
+                    $wherearr['Service.price >='] = $min;
                 }
             case 6:
                 if ($_GET["max"] != "") {
                     //$constrain = $constrain . " && `price` < $max";;
                     //$arr['price <'] = $max;
-                    $wherearr['price <='] = $max;
+                    $wherearr['Service.price <='] = $max;
                 }
             case 7:
       //          if ($_GET["level"] != "") {
@@ -97,6 +97,7 @@ class Skills extends CI_Controller
         $this->load->model('Service_model');
         //$z = $this->Service_model->s_search($arr,$arr1);
         $z = $this->Service_model->s_search($wherearr,$likearr);
+        //echo var_dump($z);
 
 
         header('Content-Type: text/xml');

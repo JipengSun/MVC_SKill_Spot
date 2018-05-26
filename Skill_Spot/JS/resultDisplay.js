@@ -180,11 +180,11 @@ function create_map() {
 
         var info_window = "<div class=\"info-windows\">\
 <div class=\"info-windows-photo\">\
-    <img class=\"seller-profile\" src=\"" + myLatLng[i]["img"] + "\">\
+    <img class=\"seller-profile\" src=\"" + myLatLng[i]["profile"] + "\">\
     </div>\
 \
     <div class=\"info-windows-price\">" +
-            myLatLng[i]["price"] + "/h" +
+            myLatLng[i]["price"] + " $/h" +
 
             "</div>\
             <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\

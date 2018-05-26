@@ -33,6 +33,10 @@ class User_test extends CI_Model {
         $this->db->where('uid',$id);
         $this->db->update('User',$arr); //Need to have a key value array.
     }
+    function u_updatebyname($name,$arr){
+        $this->db->where('username',$name);
+        $this->db->update('User',$arr); //Need to have a key value array.
+    }
     function u_select($email){
         $this->db->where('mail',$email);
         $this->db->select('*');

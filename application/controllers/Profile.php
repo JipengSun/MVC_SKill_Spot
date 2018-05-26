@@ -106,6 +106,9 @@ class Profile extends CI_Controller
             // finally output png image
             //imagepng($final_image, $output_filename.$type, $png_quality);
             imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
+            $this->load->model('User_test');
+            $profilearr = array('profile'=> $output_filename2.$type);
+            $this->User_test->u_updatebyname($_SESSION['username'],$profilearr);
             $response = Array(
                 "status" => 'success',
                 "url" => $output_filename2.$type
@@ -147,7 +150,7 @@ class Profile extends CI_Controller
             'username'=>$_SESSION['username'],
             'sname'=>$this->ascdecode($_GET['service']),
             'stype'=>$_GET['cate'],
-            'price'=>$_GET['price'],
+            'price'=>$this->ascdecode($_GET['price']),
             'slocation'=>$this->ascdecode($_GET['addr']),
             'slat' => $_GET['lat'],
             'slng' => $_GET['lng']);

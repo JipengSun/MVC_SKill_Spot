@@ -53,6 +53,7 @@ class Service_model extends CI_Model {
     function s_search($wherearr,$likearr){
         $query = $this->db->select('*')
             ->from('Service')
+            ->join('User','User.uid = Service.uid')
             ->where($wherearr)
             ->like($likearr)
             ->get();
