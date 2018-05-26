@@ -9,3 +9,4 @@
 ## 1.6 Integrate with front end code </br>
 ## 1.7 Service Search and Image Crop </br>
 ## 1.8 Service Coordination Added </br>
+## 1.9 Seller Info added and Order generation </br>
