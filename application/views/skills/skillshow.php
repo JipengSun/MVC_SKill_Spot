@@ -21,20 +21,18 @@ $this->load->helper('url');
     <a href="javascript:closeLogin()"><img class="close-icon" src="<?php echo base_url()?>img/close-icon.png" ></a>
 
     <div class="login-subwin">
+        <br>
+        <br>
+        E-address:&nbsp <input id="login-E" type="text">
+        <br>
+        <label class="warn-text" id="login-win-e-label"> </label>
+        <br>
+        Password:&nbsp&nbsp&nbsp<input class="login-pw" type="password">
+        <br>
+        <label class="warn-text" id="login-win-p-label"> </label>
+        <br>
+        <input class="login-submit" type="submit" value="login" onclick="subLogin()">
 
-        <form action="<?php echo site_url('indice/login')?>" method="post">
-            <br>
-            <br>
-            E-address:&nbsp <input id="login-E" name = 'email' type="text">
-            <br>
-            <label class="warn-text" id="login-win-e-label"> </label>
-            <br>
-            Password:&nbsp&nbsp&nbsp<input class="login-pw" name = 'login-pw' type="password">
-            <br>
-            <label class="warn-text" id="login-win-p-label"> </label>
-            <br>
-            <input id="login" class="login-submit" type="submit" value="login" onclick="subLogin()">
-        </form>
     </div>
 
 </div>
@@ -43,88 +41,50 @@ $this->load->helper('url');
     <a href="javascript:closeSignup()"><img class="close-icon" src="<?php echo base_url()?>img/close-icon.png" ></a>
 
     <div class="signup-subwin">
-
-        <form action="<?php echo site_url('indice/register')?>" method="post">
-            <br>
-            <br>
-            Username:&nbsp
-            <input id="username" name="username" placeholder="username" type="text">
-            <br>
-            E-address:&nbsp
-            <input id="signup-E" name="signup-E" placeholder="E-mail" type="text">
-            <br>
-            <label class="warn-text" id="signup-win-e-label"> </label>
-            <br>
-            Password:&nbsp&nbsp
-            <input id="signup-pw" name="signup-pw" placeholder="password" type="password">
-            <br>
-            <label class="warn-text" id="signup-win-p-label"> </label>
-            <br>
-            Please Reinput your Password:&nbsp&nbsp&nbsp
-            <input id="signup-repw" name="signup-repw" placeholder="password" type="password">
-            <br>
-            <br>
-            <input type="radio" name="gender" value="female">Female
-            <input type="radio" name="gender" value="male">Male
-            <br>
-            <br>
-            <input class="signup-submit" type="submit" value="signup" onclick="subSignup()">
-        </form>
+        <br>
+        <br>
+        E-address:&nbsp <input id="signup-E" placeholder="E-mail" type="text">
+        <br>
+        <label class="warn-text" id="signup-win-e-label"> </label>
+        <br>
+        Password:&nbsp&nbsp&nbsp<input id="signup-pw" placeholder="password" type="password">
+        <br>
+        <label class="warn-text" id="signup-win-p-label"> </label>
+        <br>
+        Password:&nbsp&nbsp&nbsp<input id="signup-repw" placeholder="password" type="password">
+        <br>
+        <br>
+        <input class="signup-submit" type="button" value="signup" onclick="subSignup()">
 
     </div>
 </div>
 
 <div id="black"></div>
 
-<div class="top-bar">
-    <div class="home-holder">
-        <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
-            <span class = "logo-name">SkillSpot</span></a>
+<div class="top" style="background-image: url('<?php echo base_url()?>img/back1.jpg')">
+    <div class="top-bar">
+        <div class="home-holder">
+            <!--            <a href="index.html"> <img src="img/home.png" class="home-icon"></a>-->
+            <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
+                <span class = "logo-name">SkillSpot</span></a>
+
+        </div>
+        <!--        <div class = "logo">-->
+        <!--            <span class = "logo-name">SkillSpot</span>-->
+        <!--        </div>-->
+
+        <div class = "account-setup" id="account-before-login">
+            <input type="button" value="Log in" class = "login-icon" onclick="openLogin()"/>
+            <input type="button" value="Sign up" class = "signup-icon" onclick="openSignup()"/>
+        </div>
+
+        <div class = "account-setup" id = "account-after-login" style="display: none">
+            <a id="id-after-login" href="javascript: ">></a>
+            <input type="button" value="log out" class = "logout-icon" onclick="logout()"/>
+        </div>
+
     </div>
 
-    <?php
-    @session_start();
-    if (isset($_SESSION["username"])) {
-        echo "<div class = \"account-setup\" id=\"account-before-login\" style='display: none'>";
-    } else {
-        echo "<div class = \"account-setup\" id=\"account-before-login\">";
-    }
-    ?>
-    <input type="button" value="Log in" class = "log-icon" onclick="openLogin()"/>
-    <input type="button" value="Sign up" class = "log-icon" onclick="openSignup()"/>
-</div>
-
-<?php
-@session_start();
-if (isset($_SESSION["username"])) {
-    //echo $_SESSION['username'];
-    echo "<div class = \"account-setup\" id = \"account-after-login\">";
-    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
-    echo '<script src=';
-    echo base_url();
-    echo 'JS/mynotif.js ></script>';
-    $name = $_SESSION["username"];
-    $url1 = site_url('backend/list')."/". $name;
-    $url2 = site_url('profile/setup')."/".$name;
-    $url3 = site_url('indice/logout');
-
-    echo "<a \" href=\"$url1\">Backend</a>";
-    echo "&nbsp;";
-    echo "<a \" href=\"$url2\">$name</a>";
-    echo "&nbsp;";
-    echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
-} else {
-    echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
-    //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
-}
-?>
-</div>
-
-</div>
-
-
-
-<div class="top" style="background-image: url('<?php echo base_url()?>img/back1.jpg')">
 
 
     <div class= "search-line">

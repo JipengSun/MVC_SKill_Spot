@@ -7,7 +7,7 @@
 
 .personInfo-container{
     width: 800px;
-    height: 200px;
+    height: 300px;
     overflow: auto;
     margin: 0 auto;
     background-color: white;
@@ -16,7 +16,7 @@
 #personInfo{
     float:left;
     width: 400px;
-    height:190px;
+    height:390px;
     float: left;
     padding: 30px;
     background-color: white;
@@ -32,7 +32,7 @@
 
 #summary-container{
     width: 780px;
-    height:250px;
+    height:150px;
     overflow-y: scroll;
     padding: 10px;
     margin: 0 auto;

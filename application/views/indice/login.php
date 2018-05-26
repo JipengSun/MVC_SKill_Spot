@@ -108,7 +108,7 @@ $user = $sql->listUser();
         echo 'JS/mynotif.js ></script>';
         $name = $_SESSION["username"];
         $url1 = site_url('backend/list')."/". $name;
-        $url2 = site_url('profile/setup')."/".$name;
+        $url2 = site_url('profile/setup');
         $url3 = site_url('indice/logout');
 
         echo "<a \" href=\"$url1\">Backend</a>";

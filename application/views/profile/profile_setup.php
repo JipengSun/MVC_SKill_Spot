@@ -3,6 +3,7 @@ $this->load->helper('url');
 ?>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="<?php echo base_url();?>CSS/index.css">
 <head>
 
     <title>SKILLSPOT</title>
@@ -110,9 +111,9 @@ $this->load->helper('url');
         //echo $_SESSION['username'];
         echo "<div class = \"account-setup\" id = \"account-after-login\">";
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
-        echo '<script src=';
-        echo base_url();
-        echo 'JS/mynotif.js ></script>';
+        //echo '<script src=';
+        //echo base_url();
+        //echo 'JS/mynotif.js ></script>';
         $name = $_SESSION["username"];
         $url1 = site_url('backend/list')."/". $name;
         $url2 = site_url('profile/setup')."/".$name;

@@ -59,5 +59,13 @@ class Service_model extends CI_Model {
             ->get();
         return $query->result_array();
     }
+    function searchallbyname($username){
+        $query = $this->db->select('*')
+            ->from('Service')
+            ->join('User','User.username = Service.username')
+            ->where('User.username',$username)
+            ->get();
+        return $query->result_array();
+    }
 
 }

@@ -53,5 +53,11 @@ class User_test extends CI_Model {
         $this->db->where('uid',$id);
         $this->db->delete('User');
     }
+    function u_selectid($id){
+        $this->db->where('uid',$id);
+        $this->db->select('*');
+        $query = $this->db->get('User');
+        return $query->result();
+    }
 
 }

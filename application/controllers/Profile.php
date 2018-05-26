@@ -15,8 +15,8 @@ class Profile extends CI_Controller
 	public function setup(){
 
 		//$this->load->view('templates/header',$data);
-        session_start();
-        echo $_SESSION['username'];
+        //session_start();
+       // echo $_SESSION['username'];
 
 		$this->load->view('profile/profile_setup');
 
@@ -154,7 +154,20 @@ class Profile extends CI_Controller
             'slocation'=>$this->ascdecode($_GET['addr']),
             'slat' => $_GET['lat'],
             'slng' => $_GET['lng']);
-        $this->Service_model->s_insert($arr);
+        if ($_GET['service']!=''){
+            $this->Service_model->s_insert($arr);
+        }
+        $userarr = array();
+        if ($_GET['number']!=''){
+            $userarr['phonenumber'] = $this->ascdecode($_GET['number']);
+        }
+
+        if($_GET['summary']!=''){
+            $userarr['pdescription'] = $this->ascdecode($_GET['summary']);
+        }
+        if($_GET['number']!='' or $_GET['summary']!=''){
+            $this->user_test->u_update($id,$userarr);
+        }
         echo 'Success';
     }
 

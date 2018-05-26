@@ -14,7 +14,7 @@ class newPDF{
         $invoice = new \Konekt\PdfInvoice\InvoicePrinter();
         $invoice->setLogo('img/SRZK.png');
         $invoice->setColor('#007fff');
-        $invoice->setType("SkillSpot Sale Invoice");    // Invoice Type
+        $invoice->setType("SkillSpot Order Voucher");    // Invoice Type
         $invoice->setReference("INV-55033645");   // Reference
         $invoice->setDate(date('M dS ,Y',time()));   //Billing Date
         $invoice->setTime(date('h:i:s A',time()));   //Billing Time
@@ -33,11 +33,11 @@ class newPDF{
         //$invoice->addTotal("VAT 21%",1986.6);
         //$invoice->addTotal("Total due",11446.6,true);
 
-        $invoice->addBadge("Payment Paid");
+        $invoice->addBadge("Service Ordered");
 
         $invoice->addTitle("Important Notice");
 
-        $invoice->addParagraph("You can't get refund of your service if you don't have this invoice with you.");
+        $invoice->addParagraph("You can't verify your identification to the seller if you don't have this voucher with you.");
 
         $invoice->setFooternote("SkillSpot");
 
