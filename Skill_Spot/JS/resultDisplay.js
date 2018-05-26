@@ -16,26 +16,26 @@ var myLatLng
 //         {"lat":-27.493750, "lng":153.015088, "n":"trhbh", "s":"I sale ewwe", "l": "0"}
 // ];
 
-var info_window = "<div class=\"info-windows\">\
-<div class=\"info-windows-photo\">\
-    <img class=\"seller-profile\" src=\"img/profile.png\">\
-    </div>\
-\
-    <div class=\"info-windows-price\">\
-    $75/h\
-\
-    </div>\
-    <img class=\"level-icon\" src=\"img/5start.png\">\
-    <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
-    <div class=\"info-windows-services\">\
-    <span style=\"font-weight: bold\">Frank Lu:<br></span>\
-repair computer\
-</div>\
-\
-<div class=\"info-windows-addr\">\
-    2 david cl, sunnybank hills\
-</div>\
-</div>";
+// var info_window = "<div class=\"info-windows\">\
+// <div class=\"info-windows-photo\">\
+//     <img class=\"seller-profile\" src=\"img/profile.png\">\
+//     </div>\
+// \
+//     <div class=\"info-windows-price\">\
+//     $75/h\
+// \
+//     </div>\
+//     <img class=\"level-icon\" src=\"img/5start.png\">\
+//     <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
+//     <div class=\"info-windows-services\">\
+//     <span style=\"font-weight: bold\">Frank Lu:<br></span>\
+// repair computer\
+// </div>\
+// \
+// <div class=\"info-windows-addr\">\
+//     2 david cl, sunnybank hills\
+// </div>\
+// </div>";
 
 var xmlHttp = createXmlHttpRequestObject();
 
@@ -177,6 +177,28 @@ function create_map() {
     var infowindow = new google.maps.InfoWindow();
     var i;
     for (i = 0; i < myLatLng.length; i++) {
+
+        var info_window = "<div class=\"info-windows\">\
+<div class=\"info-windows-photo\">\
+    <img class=\"seller-profile\" src=\"" + myLatLng[i]["img"] + "\">\
+    </div>\
+\
+    <div class=\"info-windows-price\">" +
+            myLatLng[i]["price"] + "/h" +
+
+            "</div>\
+            <input class=\"info-windows-button\" type=\"submit\" value=\"Go\">\
+            <div class=\"info-windows-services\">\
+            <span style=\"font-weight: bold\">"+ myLatLng[i]["username"] + ":<br></span>" +
+            myLatLng[i]["service"] +
+            "</div>\
+            \
+            <div class=\"info-windows-addr\">" +
+            myLatLng[i]["address"] +
+            "</div>\
+            </div>";
+
+
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(myLatLng[i]["lat"], myLatLng[i]["lng"]),
             map: map
@@ -191,8 +213,6 @@ function create_map() {
 
         createDiv(myLatLng[i], marker);
     }
-
-
 }
 
 

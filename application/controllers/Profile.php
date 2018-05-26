@@ -44,8 +44,8 @@ class Profile extends CI_Controller
         $jpeg_quality = 100;
         session_start();
         //Need to change when deploying on the server.
+//        $output_filename = "/Applications/XAMPP/xamppfiles/htdocs/Skill_Spot/img/tmp/avatar_".$_SESSION['username'];
         $output_filename = "/Applications/XAMPP/xamppfiles/htdocs/Skill_Spot/img/tmp/avatar_".$_SESSION['username'];
-
         $output_filename2 = base_url()."img/tmp/avatar_".$_SESSION['username'];
 
         // uncomment line below to save the cropped image in the same location as the original image.
@@ -121,6 +121,21 @@ class Profile extends CI_Controller
         $this->user_test->u_update($id, $arr1);
 
     }
+
+    public function ascdecode($mesg) {
+	    if (preg_match("/[^,\d]/", $mesg)) {
+	        die();
+        }
+
+	    $result = explode(",", $mesg);
+	    $string = "";
+	    foreach ($result as $char) {
+	        $string += chr((int)$char);
+        }
+
+        return $string;
+    }
+
     public function collectinfo(){
 	    session_start();
         $this->load->model('user_test');

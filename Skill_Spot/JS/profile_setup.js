@@ -61,9 +61,10 @@ function initMap() {
 }
 
 function get_coord(address) {
+    console.log(address);
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
-            // console.log(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+            console.log(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
             return [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
         } else {
             alert('Invalid address!');
@@ -105,39 +106,42 @@ function handleServerResponse(){
 }
 
 function upload(){
-    if(xmlHttp.readyState==0 || xmlHttp.readyState==4){
-        var name = str2asc(document.getElementById("first-name").value);
-        var number = str2asc(document.getElementById("number").value);
-        var summary = str2asc(get_content());
 
 
-        var service = str2asc(document.getElementsByClassName('service-name')[0].value);
+    geocoder.geocode({'address': document.getElementsByClassName('service-addr')[0].value}, function(results, status) {
+        if (status === 'OK') {
+            console.log(results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
 
-        var price = str2asc(document.getElementsByClassName('service-price')[0].value);
-        var addr = str2asc(document.getElementsByClassName('service-addr')[0].value);
+            if(xmlHttp.readyState==0 || xmlHttp.readyState==4){
+                var name = str2asc(document.getElementById("first-name").value);
+                var number = str2asc(document.getElementById("number").value);
+                var summary = str2asc(get_content());
 
-        var cate = document.getElementsByClassName('service-cate')[0];
-        var cate_index = cate.selectedIndex;
-        var cate_value = cate.options[cate_index].value;
-        var temp;
-        if ((temp = get_coord(addr)) == null) {
+
+                var service = str2asc(document.getElementsByClassName('service-name')[0].value);
+
+                var price = str2asc(document.getElementsByClassName('service-price')[0].value);
+                var addr = str2asc(document.getElementsByClassName('service-addr')[0].value);
+
+                var cate = document.getElementsByClassName('service-cate')[0];
+                var cate_index = cate.selectedIndex;
+                var cate_value = cate.options[cate_index].value;
+                var lat = results[0].geometry.location.lat();
+                var lng = results[0].geometry.location.lng();
+                var getmessage = "Profile/update?name=" + name + "&number=" + number + "&summary=" + summary + "&cate=" +
+                    cate_value + "&service=" + service + "&price=" + price + "&addr=" + addr + "&lat="+lat+"&lng="+lng;
+                console.log(getmessage);
+                xmlHttp.open("GET", getmessage,true);
+                xmlHttp.onreadystatechange = handleServerResponse;
+                xmlHttp.send(null);
+            }
+
+        } else {
+            alert('Invalid address!');
             return;
         }
+    });
 
-        var lat = temp[0];
-        var lng = temp[1];
 
-        console.log(name + "   " + number + "    " + summary + "   " +
-    cate_value + "    " + service + "   " + price + "    " + addr);
-
-        var getmessage = "Profile/update?naPme=" + name + "&number=" + number + "&summary=" + summary + ", " +
-            cate_value + " ," + service + " ," + price + " ," + addr
-
-        xmlHttp.open("GET", phpmessage,true);
-        xmlHttp.onreadystatechange = handleServerResponse;
-        xmlHttp.send(null);
-    }else{
-        // setTimeout('process()',1000);//cekaj 1s pa probaj opet
-    }
 }
 

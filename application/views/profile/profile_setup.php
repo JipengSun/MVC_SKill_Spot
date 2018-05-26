@@ -113,14 +113,14 @@ var croppicHeaderOptions = {
     customUploadButtonId:'cropContainerHeaderButton',
     modal:false,
     processInline:true,
-    // onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-    // onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
-    // onImgDrag: function(){ console.log('onImgDrag') },
-    // onImgZoom: function(){ console.log('onImgZoom') },
-    // onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-    // onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-    // onReset:function(){ console.log('onReset') },
-    // onError:function(errormessage){ console.log('onError:'+errormessage) }
+    onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
+    onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+    onImgDrag: function(){ console.log('onImgDrag') },
+    onImgZoom: function(){ console.log('onImgZoom') },
+    onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
+    onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
+    onReset:function(){ console.log('onReset') },
+    onError:function(errormessage){ console.log('onError:'+errormessage) }
 
 }
 var croppic = new Croppic('croppic', croppicHeaderOptions);
