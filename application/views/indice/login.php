@@ -79,55 +79,59 @@ $user = $sql->listUser();
 <div id="black"></div>
 
 <div class="top">
-    <div class="top-bar">
-        <div class="home-holder">
-            <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
-            <span class = "logo-name">SkillSpot</span></a>
+
+
+
+
+    <div class = "main-body" style = "background-image: url('<?php echo base_url();?>img/back1.jpg')">
+        <div class="top-bar">
+            <div class="home-holder">
+                <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
+                    <span class = "logo-name">SkillSpot</span></a>
+            </div>
+
+            <?php
+            @session_start();
+            if (isset($_SESSION["username"])) {
+                echo "<div class = \"account-setup\" id=\"account-before-login\" style='display: none'>";
+            } else {
+                echo "<div class = \"account-setup\" id=\"account-before-login\">";
+            }
+            ?>
+            <input type="button" value="Log in" class = "log-icon" onclick="openLogin()"/>
+            <input type="button" value="Sign up" class = "log-icon" onclick="openSignup()"/>
         </div>
 
         <?php
         @session_start();
         if (isset($_SESSION["username"])) {
-        echo "<div class = \"account-setup\" id=\"account-before-login\" style='display: none'>";
-            } else {
-            echo "<div class = \"account-setup\" id=\"account-before-login\">";
-                }
-                ?>
-            <input type="button" value="Log in" class = "log-icon" onclick="openLogin()"/>
-            <input type="button" value="Sign up" class = "log-icon" onclick="openSignup()"/>
-        </div>
+            //echo $_SESSION['username'];
+            echo "<div class = \"account-setup\" id = \"account-after-login\">";
+            echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
+            echo '<script src=';
+            echo base_url();
+            echo 'JS/mynotif.js ></script>';
+            $name = $_SESSION["username"];
+            $url1 = site_url('backend/list')."/". $name;
+            $url2 = site_url('profile/setup');
+            $url3 = site_url('indice/logout');
 
-    <?php
-    @session_start();
-    if (isset($_SESSION["username"])) {
-        //echo $_SESSION['username'];
-        echo "<div class = \"account-setup\" id = \"account-after-login\">";
-        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
-        echo '<script src=';
-        echo base_url();
-        echo 'JS/mynotif.js ></script>';
-        $name = $_SESSION["username"];
-        $url1 = site_url('backend/list')."/". $name;
-        $url2 = site_url('profile/setup');
-        $url3 = site_url('indice/logout');
-
-        echo "<a \" href=\"$url1\">Backend</a>";
-        echo "&nbsp;";
-        echo "<a \" href=\"$url2\">$name</a>";
-        echo "&nbsp;";
-        echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
-    } else {
-        echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
-        //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
-    }
-    ?>
-        </div>
-
+//            echo "<a \" href=\"$url1\">Backend</a>";
+            echo "&nbsp;";
+            echo "<a \" href=\"$url2\">$name</a>";
+            echo "&nbsp;";
+            echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
+        } else {
+            echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
+            //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
+        }
+        ?>
     </div>
 
+</div>
 
 
-    <div class = "main-body" style = "background-image: url('<?php echo base_url();?>img/back1.jpg')">
+
         <div class="main-body-text" id="main-body-text">
             <a style="font-size: 30px">Get more done</a>
             <br>
@@ -135,7 +139,7 @@ $user = $sql->listUser();
             <br><br>
             <input class="btn-get-start" type="button" value="Get start now" onclick="getStart()">
         </div>
-        <div class= "search-line" id= "search-line">
+        <div class= "search-line" id= "search-line" style="display: none;">
             <form action= "<?php echo site_url('Skills/show')?>" >
             <input type="text" class = "textbox-search" placeholder="I'm looking for ..." name = 'e_sname'>
             <input type="text" class = "textbox-location" placeholder="Location" name="e_location">

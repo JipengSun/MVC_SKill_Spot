@@ -90,10 +90,12 @@ function handleServerResponse(){
         if(xmlHttp.status==200){
             xmlResponse = xmlHttp.responseXML;
             console.log(xmlHttp.responseText);
-            xmlDocumentElement = xmlResponse.documentElement;
-            message = xmlDocumentElement.firstChild.data;
+            // xmlDocumentElement = xmlResponse.documentElement;
+            // message = xmlDocumentElement.firstChild.data;
+            message = xmlHttp.responseText;
             var data_raw = eval ("(" + message + ")");
-            if (data_raw["response"] == "Y") {
+
+            if (data_raw["response"] == "Success") {
                 alert("OK");
             } else {
                 alert(data_raw["error"]);

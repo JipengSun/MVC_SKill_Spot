@@ -77,6 +77,54 @@ $this->load->helper('url');
 
 <div id="black"></div>
 <div class="top">
+
+
+    <div class="top-bar">
+        <div class="home-holder">
+            <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
+                <span class = "logo-name">SkillSpot</span></a>
+        </div>
+
+        <?php
+        @session_start();
+        if (isset($_SESSION["username"])) {
+            echo "<div class = \"account-setup\" id=\"account-before-login\" style='display: none'>";
+        } else {
+            echo "<div class = \"account-setup\" id=\"account-before-login\">";
+        }
+        ?>
+        <input type="button" value="Log in" class = "log-icon" onclick="openLogin()"/>
+        <input type="button" value="Sign up" class = "log-icon" onclick="openSignup()"/>
+    </div>
+
+    <?php
+    @session_start();
+    if (isset($_SESSION["username"])) {
+        //echo $_SESSION['username'];
+        echo "<div class = \"account-setup\" id = \"account-after-login\">";
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
+        //echo '<script src=';
+        //echo base_url();
+        //echo 'JS/mynotif.js ></script>';
+        $name = $_SESSION["username"];
+        $url1 = site_url('backend/list')."/". $name;
+        $url2 = site_url('profile/setup')."/".$name;
+        $url3 = site_url('indice/logout');
+
+//        echo "<a \" href=\"$url1\">Backend</a>";
+        echo "&nbsp;";
+        echo "<a \" href=\"$url2\">$name</a>";
+        echo "&nbsp;";
+        echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
+    } else {
+        echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
+        //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
+    }
+    ?>
+</div>
+
+</div>
+
     <div class="personInfo-container">
         <div id="personInfo">
             <pre>Name:   <?php echo $info[0]['username']?></pre>
@@ -116,32 +164,9 @@ $this->load->helper('url');
         <?php echo $info[0]['pdescription']?>
     </div>
 
-    <div id="review-container">
+<div style="height: 200px">
 
-        <?php
-
-        $_sample = array(["id" => "lvzheng", "review"=>"good staff", "date"=>"2018-04-19 18:56:21"],
-            ["id" => "lvzheng3", "review"=>"really bad", "date"=>"2018-04-19 15:16:21"],
-            ["id" => "lvzheng3", "review"=>"really bad", "date"=>"2018-04-19 15:16:21"],
-            ["id" => "lvzheng3", "review"=>"really bad", "date"=>"2018-04-19 15:16:21"]);
-
-        foreach($_sample as $info) {
-            $html_code =
-                "<div style=\"width: 760px; height: 80px; background-color: rgb(170, 223, 253); margin: 5px auto; font-size: 13px;\">
-                    <div style=\"overflow: auto; width: 760px;\">
-                        <div style=\"width: 200px; height: 15px; float: left;\">ID: ".$info["id"]."</div>
-                        <div style=\"width: 150px; height: 15px; float: right;\">".$info["date"]."</div>
-                    </div>
-                    <div style=\"width: 760px; height: 65px; overflow: hidden; text-overflow: ellipsis;\">".$info["review"]."</div>
-                </div>";
-
-            echo $html_code;
-        }
-
-        ?>
-
-
-    </div>
+</div>
 
 
 

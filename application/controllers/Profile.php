@@ -17,6 +17,10 @@ class Profile extends CI_Controller
 		//$this->load->view('templates/header',$data);
         //session_start();
        // echo $_SESSION['username'];
+        SESSION_START();
+        if(!isset($_SESSION["username"])) {
+            die("Please login first!!!!");
+        }
 
 		$this->load->view('profile/profile_setup');
 
@@ -168,7 +172,8 @@ class Profile extends CI_Controller
         if($_GET['number']!='' or $_GET['summary']!=''){
             $this->user_test->u_update($id,$userarr);
         }
-        echo 'Success';
+        //echo 'Success';
+        print json_encode(["response" => 'Success']);
     }
 
 

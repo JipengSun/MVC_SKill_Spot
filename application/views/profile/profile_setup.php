@@ -88,47 +88,47 @@ $this->load->helper('url');
 
 <div id="whole">
     <div class="top-bar">
-        <div class="home-holder">
-            <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
-                <span class = "logo-name">SkillSpot</span></a>
-        </div>
-
-        <?php
-        @session_start();
-        if (isset($_SESSION["username"])) {
-            echo "<div class = \"account-setup\" id=\"account-before-login\" style='display: none'>";
-        } else {
-            echo "<div class = \"account-setup\" id=\"account-before-login\">";
-        }
-        ?>
-        <input type="button" value="Log in" class = "log-icon" onclick="openLogin()"/>
-        <input type="button" value="Sign up" class = "log-icon" onclick="openSignup()"/>
+    <div class="home-holder">
+        <a href="<?php echo site_url('indice/index')?>" style="text-decoration: none">
+            <span class = "logo-name">SkillSpot</span></a>
     </div>
 
     <?php
     @session_start();
     if (isset($_SESSION["username"])) {
-        //echo $_SESSION['username'];
-        echo "<div class = \"account-setup\" id = \"account-after-login\">";
-        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
-        //echo '<script src=';
-        //echo base_url();
-        //echo 'JS/mynotif.js ></script>';
-        $name = $_SESSION["username"];
-        $url1 = site_url('backend/list')."/". $name;
-        $url2 = site_url('profile/setup')."/".$name;
-        $url3 = site_url('indice/logout');
-
-        echo "<a \" href=\"$url1\">Backend</a>";
-        echo "&nbsp;";
-        echo "<a \" href=\"$url2\">$name</a>";
-        echo "&nbsp;";
-        echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
+        echo "<div class = \"account-setup\" id=\"account-before-login\" style='display: none'>";
     } else {
-        echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
-        //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
+        echo "<div class = \"account-setup\" id=\"account-before-login\">";
     }
     ?>
+    <input type="button" value="Log in" class = "log-icon" onclick="openLogin()"/>
+    <input type="button" value="Sign up" class = "log-icon" onclick="openSignup()"/>
+</div>
+
+<?php
+@session_start();
+if (isset($_SESSION["username"])) {
+    //echo $_SESSION['username'];
+    echo "<div class = \"account-setup\" id = \"account-after-login\">";
+    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
+    //echo '<script src=';
+    //echo base_url();
+    //echo 'JS/mynotif.js ></script>';
+    $name = $_SESSION["username"];
+    $url1 = site_url('backend/list')."/". $name;
+    $url2 = site_url('profile/setup')."/".$name;
+    $url3 = site_url('indice/logout');
+
+//    echo "<a \" href=\"$url1\">Backend</a>";
+    echo "&nbsp;";
+    echo "<a \" href=\"$url2\">$name</a>";
+    echo "&nbsp;";
+    echo "<a id=\"id-after-login\" href=\"$url3\">Logout</a>";
+} else {
+    echo "<div class = \"account-setup\" id = \"account-after-login\" style=\"display: none\">";
+    //<input type="submit"  href="<?php echo site_url('indice/logout')" value="log out" class = "logout-icon" onclick="logout()" />
+}
+?>
 </div>
 
 </div>

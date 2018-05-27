@@ -18,6 +18,10 @@ class Backend extends CI_Controller
     public function list(){
 
         //$this->load->view('templates/header',$data);
+        SESSION_START();
+        if(!isset($_SESSION["username"])) {
+            die("Please login first!!!!");
+        }
 
         $this->load->view('backend/backend');
     }
@@ -35,6 +39,8 @@ class Backend extends CI_Controller
             ["from"=>"00dd2fjgj", "subject"=>"look after babies", "date"=>"2018-01-02 12:12:01", "content"=>"followed two weeks later, on 18 November 1956. Stations in other capital cities followed: ABQ-2 (Brisbane, Queensland) (1959), ABS-2 (Adelaide, South Australia) (1960), ABW-2 (Perth, Western Australia) (1960), and ABT-2 (Hobart, Tasmania) (1960). ABC-3 Canberra opened in 1961, and ABD-6 (Darwin, Northern Territories) started broadcasting in 1971, both named after the base city."],
             ["from"=>"00fhdfwee1", "subject"=>"assignments", "date"=>"2018-01-02 12:12:11", "content"=>"Although radio programs could be distributed nationally by landline, television relay facilities were not in place until the early 1960s.[14] This meant that news bulletins had to be sent to each capital city by teleprinter, to be prepared and presented separately in each city, with filmed materials copied manually and sent to each state."]
         );
+
+
 
 
         header('Content-Type: text/xml');
